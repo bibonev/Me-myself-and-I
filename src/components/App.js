@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import Header from './common/Header.js';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {Link} from 'react-router';
 
 import Avatar from 'material-ui/Avatar';
 import AutoComplete from 'material-ui/AutoComplete';
@@ -38,6 +39,7 @@ class App extends React.Component {
         const selectedMenu = {
             backgroundColor: "lightBlue"
         }
+        console.log();
         return (
             <MuiThemeProvider muiTheme={theme}>
                 {this.state.open
@@ -64,45 +66,52 @@ class App extends React.Component {
                                 ? selectedMenu
                                 : {}}
                                 primaryText="About"
+                                containerElement={< Link to = "/" />}
                                 leftIcon={< ActionAbout />}/>
                             <Divider/>
                             <MenuItem
-                                style={this.context.location.pathname == "projects"
+                                style={this.context.location.pathname == "/projects"
                                 ? selectedMenu
                                 : {}}
                                 primaryText="Projects"
+                                containerElement={< Link to = "/projects" />}
                                 leftIcon={< ActionCode />}/>
                             <MenuItem
-                                style={this.context.location.pathname == "experience"
+                                style={this.context.location.pathname == "/experience"
                                 ? selectedMenu
                                 : {}}
                                 primaryText="Experience"
+                                containerElement={< Link to = "/experience" />}
                                 leftIcon={< ActionWork />}/>
                             <MenuItem
-                                style={this.context.location.pathname == "feedback"
+                                style={this.context.location.pathname == "/feedback"
                                 ? selectedMenu
                                 : {}}
                                 primaryText="Feedback"
+                                containerElement={< Link to = "/feedback" />}
                                 leftIcon={< ActionFeedback />}/>
                             <Divider/>
                             <MenuItem
-                                style={this.context.location.pathname == "hobbies"
+                                style={this.context.location.pathname == "/hobbies"
                                 ? selectedMenu
                                 : {}}
                                 primaryText="Hobbies"
+                                containerElement={< Link to = "/hobbies" />}
                                 leftIcon={< ActionHobbies />}/>
                             <MenuItem
-                                style={this.context.location.pathname == "languages"
+                                style={this.context.location.pathname == "/languages"
                                 ? selectedMenu
                                 : {}}
                                 primaryText="Langauges"
+                                containerElement={< Link to = "/languages" />}
                                 leftIcon={< ActionLanguages />}/>
                             <Divider/>
                             <MenuItem
-                                style={this.context.location.pathname == "contact"
+                                style={this.context.location.pathname == "/contact"
                                 ? selectedMenu
                                 : {}}
                                 primaryText="Contact"
+                                containerElement={< Link to = "/contact" />}
                                 leftIcon={< PersonOutline />}/>
                         </Drawer>
                         {this.props.children}

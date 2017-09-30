@@ -4,6 +4,11 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as projectsActions from '../../actions/projectsActions';
 
+import {List, ListItem} from 'material-ui/List';
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
+import ActionCode from 'material-ui/svg-icons/action/code';
+
 class ProjectsPage extends React.Component {
     constructor() {
         super();
@@ -17,10 +22,36 @@ class ProjectsPage extends React.Component {
     }
 
     render() {
-        console.log("Projects: ", this.props.projects);
         return (
             <div>
-                <h1>Who the fuck is this singer?</h1>
+                <List>
+                    {this
+                        .props
+                        .projects
+                        .map(project => {
+                            return (
+                                <ListItem>
+                                    <Card>
+                                        <CardHeader title={project.name} subtitle="Subtitle"/>
+                                        <CardText expandable={false}>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis pretium
+                                            massa. Aliquam erat volutpat. Nulla facilisi. Donec vulputate interdum
+                                            sollicitudin. Nunc lacinia auctor quam sed pellentesque. Aliquam dui mauris,
+                                            mattis quis lacus id, pellentesque lobortis odio.
+                                        </CardText>
+                                        <CardActions>
+                                            <FlatButton
+                                                href="https://github.com/bibonev/"
+                                                target="_blank"
+                                                label=""
+                                                primary={true}
+                                                icon={< ActionCode />}/>
+                                        </CardActions>
+                                    </Card>
+                                </ListItem>
+                            );
+                        })}
+                </List>
             </div>
         );
     }

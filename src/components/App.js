@@ -1,17 +1,17 @@
-import React, {PropTypes} from 'react';
-import Header from './common/Header.js';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import React, {PropTypes} from 'react';;
 import {Link} from 'react-router';
+
+import theme from './common/Theme.js';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import Avatar from 'material-ui/Avatar';
 import AutoComplete from 'material-ui/AutoComplete';
 import Dialog from 'material-ui/Dialog';
-import theme from './common/Theme.js';
-
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import PersonOutline from 'material-ui/svg-icons/social/person-outline';
 import Divider from 'material-ui/Divider';
+import Paper from 'material-ui/Paper';
 import ActionCode from 'material-ui/svg-icons/action/code';
 import ActionFeedback from 'material-ui/svg-icons/action/feedback';
 import ActionWork from 'material-ui/svg-icons/action/work';
@@ -36,10 +36,18 @@ class App extends React.Component {
     }
 
     render() {
-        const selectedMenu = {
-            backgroundColor: "lightBlue"
-        }
-        console.log();
+        const style = {
+            card: {
+                margin: "0px 0px 0px 300px"
+            },
+            div: {
+                height: "100vh",
+                padding: "40px"
+            },
+            selectedMenu: {
+                backgroundColor: "lightBlue"
+            }
+        };
         return (
             <MuiThemeProvider muiTheme={theme}>
                 {this.state.open
@@ -63,7 +71,7 @@ class App extends React.Component {
                             </MenuItem>
                             <MenuItem
                                 style={this.context.location.pathname == "/"
-                                ? selectedMenu
+                                ? style.selectedMenu
                                 : {}}
                                 primaryText="About"
                                 containerElement={< Link to = "/" />}
@@ -71,21 +79,21 @@ class App extends React.Component {
                             <Divider/>
                             <MenuItem
                                 style={this.context.location.pathname == "/projects"
-                                ? selectedMenu
+                                ? style.selectedMenu
                                 : {}}
                                 primaryText="Projects"
                                 containerElement={< Link to = "/projects" />}
                                 leftIcon={< ActionCode />}/>
                             <MenuItem
                                 style={this.context.location.pathname == "/experience"
-                                ? selectedMenu
+                                ? style.selectedMenu
                                 : {}}
                                 primaryText="Experience"
                                 containerElement={< Link to = "/experience" />}
                                 leftIcon={< ActionWork />}/>
                             <MenuItem
                                 style={this.context.location.pathname == "/feedback"
-                                ? selectedMenu
+                                ? style.selectedMenu
                                 : {}}
                                 primaryText="Feedback"
                                 containerElement={< Link to = "/feedback" />}
@@ -93,14 +101,14 @@ class App extends React.Component {
                             <Divider/>
                             <MenuItem
                                 style={this.context.location.pathname == "/hobbies"
-                                ? selectedMenu
+                                ? style.selectedMenu
                                 : {}}
                                 primaryText="Hobbies"
                                 containerElement={< Link to = "/hobbies" />}
                                 leftIcon={< ActionHobbies />}/>
                             <MenuItem
                                 style={this.context.location.pathname == "/languages"
-                                ? selectedMenu
+                                ? style.selectedMenu
                                 : {}}
                                 primaryText="Langauges"
                                 containerElement={< Link to = "/languages" />}
@@ -108,13 +116,17 @@ class App extends React.Component {
                             <Divider/>
                             <MenuItem
                                 style={this.context.location.pathname == "/contact"
-                                ? selectedMenu
+                                ? style.selectedMenu
                                 : {}}
                                 primaryText="Contact"
                                 containerElement={< Link to = "/contact" />}
                                 leftIcon={< PersonOutline />}/>
                         </Drawer>
-                        {this.props.children}
+                        <Paper style={style.card}>
+                            <div style={style.div}>
+                                {this.props.children}
+                            </div>
+                        </Paper>
                     </div>}
             </MuiThemeProvider>
         );

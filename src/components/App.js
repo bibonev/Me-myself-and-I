@@ -45,7 +45,7 @@ class App extends React.Component {
                 padding: "40px"
             },
             selectedMenu: {
-                backgroundColor: "lightBlue"
+                backgroundColor: "#f0d0ac"
             }
         };
         return (
@@ -58,14 +58,27 @@ class App extends React.Component {
                                 open={this.state.open}>
                                 <AutoComplete
                                     hintText="(eg. Java, C#, React, JavaScript, .NET, ...)"
-                                    dataSource={[]}
+                                    dataSource={[
+                                    'Java',
+                                    'C#',
+                                    'React',
+                                    'Angular 2',
+                                    '.NET',
+                                    'ASP',
+                                    'Python'
+                                ]}
                                     floatingLabelText="Search"
                                     fullWidth={true}
                                     onNewRequest={this.onSubmit}/>
                             </Dialog>
                         </div>
                     : <div>
-                        <Drawer open={!this.state.open} width={300}>
+                        <Drawer
+                            open={!this.state.open}
+                            width={300}
+                            containerStyle={{
+                            backgroundColor: '#d4d3b4'
+                        }}>
                             <MenuItem disabled={true}>
                                 <Avatar src={require("../../assets/profile_picture.jpg")} size={275}/>
                             </MenuItem>

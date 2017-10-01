@@ -3,6 +3,7 @@ import {Step, Stepper, StepLabel, StepContent} from 'material-ui/Stepper';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import Avatar from 'material-ui/Avatar';
+import Divider from 'material-ui/Divider';
 
 class ExperiencePage extends React.Component {
 
@@ -86,7 +87,7 @@ class ExperiencePage extends React.Component {
         return (
             <div
                 style={{
-                maxWidth: 480,
+                maxWidth: 980,
                 maxHeight: 800,
                 margin: 'auto'
             }}>
@@ -95,21 +96,56 @@ class ExperiencePage extends React.Component {
                         <StepLabel
                             icon={< Avatar src = {
                             require("../../../assets/plovdiv_university.jpg")
-                        } />}>Assistant at Plovdiv University</StepLabel>
+                        } />}
+                            style={{
+                            fontSize: '34px'
+                        }}>Assistant at Laboratory of Robotics, Mechanics and Telemechanics.</StepLabel>
                         <StepContent>
+                            <br/>
+                            <Divider/>
+                            <br/>
+                            <div
+                                style={{
+                                display: 'flex',
+                                flexWrap: 'wrap',
+                                margin: "0 auto"
+                            }}>
+                                <p
+                                    style={{
+                                    fontStyle: 'italic'
+                                }}>Plovdiv University • &nbsp;</p>
+                                <p
+                                    style={{
+                                    fontStyle: 'italic'
+                                }}>(May 2012 - May 2015) - 3 yrs • &nbsp;</p>
+                                <p
+                                    style={{
+                                    fontStyle: 'italic'
+                                }}>Plovdiv, Bulgaria</p>
+                            </div>
+                            <Divider/>
+                            <br/>
                             <p>
-                                For each ad campaign that you create, you can control how much you're willing to
-                                spend on clicks and conversions, which networks and geographical locations you
-                                want your ads to show on, and more.
+                                Being an assistant in the laboratory gave me a lot of experience in researching,
+                                developing and debugging. I learned a lot about graphics, in particular OpenGL
+                                and DirectX (XNA). Also, I have implemented many algorithms in the area of 2D/3D
+                                image processing and point cloud handling using C/C++. Moreover, I used Kinect
+                                and other sensors, such as Arduino and MPU6050 in order to scan environments and
+                                process the gathered data. During my time in the laboratory I have developed two
+                                projects in this field in collaboration with the head assistant professor, PhD
+                                A. Penev.
                             </p>
-                            {this.renderStepActions(0)}
+                            <Divider/> {this.renderStepActions(0)}
                         </StepContent>
                     </Step>
                     <Step>
                         <StepLabel
                             icon={< Avatar src = {
                             require("../../../assets/contact_group.jpeg")
-                        } />}>Software Developer at the Contact Group</StepLabel>
+                        } />}
+                            style={{
+                            fontSize: '34px'
+                        }}>Software Developer</StepLabel>
                         <StepContent>
                             <p>An ad group contains one or more ads which target a shared set of keywords.</p>
                             {this.renderStepActions(1)}
@@ -119,7 +155,7 @@ class ExperiencePage extends React.Component {
                         <StepLabel
                             icon={< Avatar src = {
                             require("../../../assets/ibm.jpg")
-                        } />}>Software Engineer at IBM</StepLabel>
+                        } />}>Software Engineer</StepLabel>
                         <StepContent>
                             <p>
                                 Try out different ad text to see what brings in the most customers, and learn

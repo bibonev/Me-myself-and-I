@@ -20,6 +20,7 @@
     "babel-polyfill": "6.8.0",
     "colors": "^1.1.2",
     "material-ui-pagination": "^1.1.6",
+    "prop-types": "^15.6.0",
     "react": "15.0.2",
     "react-dom": "15.0.2",
     "react-redux": "4.4.5",

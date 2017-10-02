@@ -129,13 +129,13 @@ class ExperiencePage extends React.Component {
                                 Being an assistant in the laboratory gave me a lot of experience in researching,
                                 developing and debugging. I learned a lot about graphics, in particular OpenGL
                                 and DirectX (XNA). Also, I have implemented many algorithms in the area of 2D/3D
-                                image processing and point cloud handling using C/C++. Moreover, I used Kinect
-                                and other sensors, such as Arduino and MPU6050 in order to scan environments and
-                                process the gathered data. During my time in the laboratory I have developed two
-                                projects in this field in collaboration with the head assistant professor, PhD
-                                A. Penev.
-                            </p>
-                            <Divider/> {this.renderStepActions(0)}
+                                                                                                                                image processing and point cloud handling using C/C++. Moreover, I used Kinect
+                                                                                                                                and other sensors, such as Arduino and MPU6050 in order to scan environments and
+                                                                                                                                process the gathered data. During my time in the laboratory I have developed two
+                                                                                                                                projects in this field in collaboration with the head assistant professor, PhD
+                                                                                                                                A. Penev.
+                                                                                                                            </p>
+                                                                                                                            <Divider/> {this.renderStepActions(0)}
                         </StepContent>
                     </Step>
                     <Step>
@@ -167,23 +167,6 @@ class ExperiencePage extends React.Component {
                         </StepContent>
                     </Step>
                 </Stepper>
-                {finished && (
-                    <p
-                        style={{
-                        margin: '20px 0',
-                        textAlign: 'center'
-                    }}>
-                        <a
-                            href="#"
-                            onClick={(event) => {
-                            event.preventDefault();
-                            this.setState({stepIndex: 0, finished: false});
-                        }}>
-                            Click here
-                        </a>
-                        to reset the example.
-                    </p>
-                )}
             </div>
         );
     }

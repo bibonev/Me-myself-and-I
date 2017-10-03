@@ -46,7 +46,7 @@ class App extends React.Component {
                 padding: "40px"
             },
             selectedMenu: {
-                backgroundColor: "white"
+                backgroundColor: "#f0d0ac"
             }
         };
         return (

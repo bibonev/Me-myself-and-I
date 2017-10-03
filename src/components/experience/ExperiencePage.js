@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as experienceActions from '../../actions/experienceActions';
 
-import {Step, Stepper, StepLabel, StepContent} from 'material-ui/Stepper';
+import {Step, Stepper, StepButton, StepLabel, StepContent} from 'material-ui/Stepper';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import Avatar from 'material-ui/Avatar';
@@ -23,15 +23,6 @@ class ExperiencePage extends React.Component {
         };
         this.handleChange = this
             .handleChange
-            .bind(this);
-        this.handleNext = this
-            .handleNext
-            .bind(this);
-        this.handlePrev = this
-            .handlePrev
-            .bind(this);
-        this.renderStepActions = this
-            .renderStepActions
             .bind(this);
     }
 
@@ -54,69 +45,6 @@ class ExperiencePage extends React.Component {
         this.setState({value: value});
     };
 
-    handleNext() {
-        const {stepIndexEducation, stepIndexComercial, stepIndexVolunteering, value} = this.state;
-        if (value === 'education') {
-            this.setState({
-                stepIndexEducation: stepIndexEducation + 1
-            });
-        } else if (value === 'comercial') {
-            this.setState({
-                stepIndexComercial: stepIndexComercial + 1
-            });
-        } else if (value === 'volunteering') {
-            this.setState({
-                stepIndexVolunteering: stepIndexVolunteering + 1
-            });
-        }
-    };
-
-    handlePrev() {
-        const {stepIndexEducation, stepIndexComercial, stepIndexVolunteering, value} = this.state;
-        if (value === 'education') {
-            if (this.state.stepIndexEducation > 0) {
-                this.setState({
-                    stepIndexEducation: stepIndexEducation - 1
-                });
-            }
-        } else if (value === 'comercial') {
-            if (this.state.stepIndexComercial > 0) {
-                this.setState({
-                    stepIndexComercial: stepIndexComercial - 1
-                });
-            }
-        } else if (value === 'volunteering') {
-            if (this.state.stepIndexVolunteering > 0) {
-                this.setState({
-                    stepIndexVolunteering: stepIndexVolunteering - 1
-                });
-            }
-        }
-    };
-
-    renderStepActions(step) {
-        return (
-            <div style={{
-                margin: '12px 0'
-            }}>
-                {step < 2 && <RaisedButton
-                    label={'Next'}
-                    disableTouchRipple={true}
-                    disableFocusRipple={true}
-                    primary={true}
-                    onClick={() => this.handleNext()}
-                    style={{
-                    marginRight: 12
-                }}/>}{step > 0 && (<FlatButton
-                    label="Back"
-                    disabled={step === 0}
-                    disableTouchRipple={true}
-                    disableFocusRipple={true}
-                    onClick={() => this.handlePrev()}/>)}
-            </div>
-        );
-    }
-
     render() {
         const {stepIndexEducation, stepIndexComercial, stepIndexVolunteering, value} = this.state;
 
@@ -130,7 +58,7 @@ class ExperiencePage extends React.Component {
                             maxHeight: 800,
                             margin: 'auto'
                         }}>
-                            <Stepper activeStep={stepIndexEducation} orientation="vertical">
+                            <Stepper activeStep={stepIndexEducation} orientation="vertical" linear={false}>
                                 {this
                                     .props
                                     .experience
@@ -138,13 +66,14 @@ class ExperiencePage extends React.Component {
                                     .map((stage, index) => {
                                         return (
                                             <Step>
-                                                <StepLabel
+                                                <StepButton
                                                     icon={< Avatar src = {
                                                     require("../../../assets/" + stage.image)
                                                 } />}
                                                     style={{
                                                     fontSize: '25px'
-                                                }}>{stage.name}</StepLabel>
+                                                }}
+                                                    onClick={() => this.setState({stepIndexEducation: index})}>{stage.name}</StepButton>
                                                 <StepContent>
                                                     <br/>
                                                     <Divider/>
@@ -175,7 +104,7 @@ class ExperiencePage extends React.Component {
                                                     {stage.textAfter !== '' && (
                                                         <p>{stage.textAfter}</p>
                                                     )}
-                                                    <Divider/> {this.renderStepActions(index, 'education')}
+                                                    <Divider/>
                                                 </StepContent>
                                             </Step>
                                         );
@@ -190,7 +119,7 @@ class ExperiencePage extends React.Component {
                             maxHeight: 800,
                             margin: 'auto'
                         }}>
-                            <Stepper activeStep={stepIndexComercial} orientation="vertical">
+                            <Stepper activeStep={stepIndexComercial} orientation="vertical" linear={false}>
                                 {this
                                     .props
                                     .experience
@@ -198,13 +127,14 @@ class ExperiencePage extends React.Component {
                                     .map((stage, index) => {
                                         return (
                                             <Step>
-                                                <StepLabel
+                                                <StepButton
                                                     icon={< Avatar src = {
                                                     require("../../../assets/" + stage.image)
                                                 } />}
                                                     style={{
                                                     fontSize: '25px'
-                                                }}>{stage.name}</StepLabel>
+                                                }}
+                                                    onClick={() => this.setState({stepIndexComercial: index})}>{stage.name}</StepButton>
                                                 <StepContent>
                                                     <br/>
                                                     <Divider/>
@@ -237,7 +167,7 @@ class ExperiencePage extends React.Component {
                                                     {stage.textAfter !== '' && (
                                                         <p>{stage.textAfter}</p>
                                                     )}
-                                                    <Divider/> {this.renderStepActions(index, 'comercial')}
+                                                    <Divider/>
                                                 </StepContent>
                                             </Step>
                                         );
@@ -252,7 +182,10 @@ class ExperiencePage extends React.Component {
                             maxHeight: 800,
                             margin: 'auto'
                         }}>
-                            <Stepper activeStep={stepIndexVolunteering} orientation="vertical">
+                            <Stepper
+                                activeStep={stepIndexVolunteering}
+                                orientation="vertical"
+                                linear={false}>
                                 {this
                                     .props
                                     .experience
@@ -260,13 +193,14 @@ class ExperiencePage extends React.Component {
                                     .map((stage, index) => {
                                         return (
                                             <Step>
-                                                <StepLabel
+                                                <StepButton
                                                     icon={< Avatar src = {
                                                     require("../../../assets/" + stage.image)
                                                 } />}
                                                     style={{
                                                     fontSize: '25px'
-                                                }}>{stage.name}</StepLabel>
+                                                }}
+                                                    onClick={() => this.setState({stepIndexVolunteering: index})}>{stage.name}</StepButton>
                                                 <StepContent>
                                                     <br/>
                                                     <Divider/>
@@ -297,12 +231,11 @@ class ExperiencePage extends React.Component {
                                                     {stage.textAfter !== '' && (
                                                         <p>{stage.textAfter}</p>
                                                     )}
-                                                    <Divider/> {this.props.experience.volunteering.length > 1 && this.renderStepActions(index, 'volunteering')}
+                                                    <Divider/>
                                                 </StepContent>
                                             </Step>
                                         );
                                     })}
-
                             </Stepper>
                         </div>
                     </Tab>

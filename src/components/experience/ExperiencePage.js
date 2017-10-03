@@ -56,7 +56,8 @@ class ExperiencePage extends React.Component {
                             style={{
                             maxWidth: 980,
                             maxHeight: 800,
-                            margin: 'auto'
+                            margin: 'auto',
+                            padding: '20px'
                         }}>
                             <Stepper activeStep={stepIndexEducation} orientation="vertical" linear={false}>
                                 {this
@@ -117,7 +118,8 @@ class ExperiencePage extends React.Component {
                             style={{
                             maxWidth: 980,
                             maxHeight: 800,
-                            margin: 'auto'
+                            margin: 'auto',
+                            padding: '20px'
                         }}>
                             <Stepper activeStep={stepIndexComercial} orientation="vertical" linear={false}>
                                 {this
@@ -180,7 +182,8 @@ class ExperiencePage extends React.Component {
                             style={{
                             maxWidth: 980,
                             maxHeight: 800,
-                            margin: 'auto'
+                            margin: 'auto',
+                            padding: '20px'
                         }}>
                             <Stepper
                                 activeStep={stepIndexVolunteering}

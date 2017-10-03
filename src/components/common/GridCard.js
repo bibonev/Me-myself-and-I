@@ -2,6 +2,8 @@ import React, {PropTypes} from 'react';
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 import Chip from 'material-ui/Chip';
+import IconButton from 'material-ui/IconButton';
+import Avatar from 'material-ui/Avatar';
 import {blue300} from 'material-ui/styles/colors';
 
 class GridCard extends React.Component {
@@ -20,7 +22,21 @@ class GridCard extends React.Component {
                     backgroundColor: 'white',
                     position: 'relative'
                 }}>
-                    <h1 style={this.props.textStyle}>{this.props.title}</h1>
+                    <div
+                        style={{
+                        display: 'flex',
+                        flexWrap: 'wrap'
+                    }}>
+                        {this.props.avatar && <IconButton
+                            href={this.props.linkedin}
+                            target="_blank"
+                            tooltip="View Linkedin"
+                            touch={false}
+                            tooltipPosition="top-right">
+                            <Avatar src={this.props.avatar}/>
+                        </IconButton>}
+                        <h1 style={this.props.textStyle}>{this.props.title}</h1>
+                    </div>
                     <Divider/>
                     <div
                         style={{
@@ -48,6 +64,15 @@ class GridCard extends React.Component {
                             textAlign: 'justify',
                             textJustify: 'inter-word'
                         }}>{this.props.text}</p>}
+                    {this.props.date && <div>
+                        <Divider/>
+                        <p
+                            style={{
+                            fontStyle: 'italic',
+                            fontSize: '12px'
+                        }}>{this.props.date}</p>
+                    </div>}
+
                     {this.props.actions && this
                         .props
                         .actions
@@ -72,6 +97,9 @@ class GridCard extends React.Component {
 GridCard.propTypes = {
     title: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
+    avatar: PropTypes.string,
+    linkedin: PropTypes.string,
+    date: PropTypes.string,
     style: PropTypes.object,
     textStyle: PropTypes.object,
     actions: PropTypes.array,

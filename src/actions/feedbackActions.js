@@ -44,7 +44,7 @@ export function showFeedback() {
                         '2LTNlMTgtNGU4Ny04NTk5LTE3ZDNhYzBjOGViOA.jpg',
                 linkedin: 'https://www.linkedin.com/in/michalgoly/'
             }, {
-                author: 'Alexander Penev',
+                author: 'A. Penev',
                 position: 'Head Assistant Professor, PhD at University of Plovdiv "Paisii Hilendarski", Fac' +
                         'ulty of Mathematics and Informatics',
                 text: 'While working together, Boyan impressed me with his intelligence and knowledge, ' +

@@ -34,7 +34,6 @@ class FeedbackPage extends React.Component {
                         .props
                         .feedbacks
                         .map(feedback => {
-                            console.log("Feedback: ", feedback);
                             return (
                                 <GridCard
                                     style={{
@@ -42,11 +41,14 @@ class FeedbackPage extends React.Component {
                                 }}
                                     textStyle={{
                                     color: 'black',
-                                    margin: "0 auto",
-                                    width: "30em"
+                                    margin: '10px 10px 10px 30px'
                                 }}
                                     title={feedback.author}
                                     text={feedback.text}
+                                    avatar={feedback.image}
+                                    linkedin={feedback.linkedin}
+                                    date={feedback.date}
+                                    height={"400px"}
                                     blockquote={true}></GridCard>
                             );
                         })}

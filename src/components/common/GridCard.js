@@ -18,7 +18,9 @@ class GridCard extends React.Component {
                     style={{
                     padding: '20px',
                     width: '450px',
-                    height: '300px',
+                    height: this.props.height
+                        ? this.props.height
+                        : '300px',
                     backgroundColor: 'white',
                     position: 'relative'
                 }}>
@@ -37,7 +39,15 @@ class GridCard extends React.Component {
                         </IconButton>}
                         <h1 style={this.props.textStyle}>{this.props.title}</h1>
                     </div>
-                    <Divider/>
+                    <Divider/> {this.props.job && <div>
+                        <p
+                            style={{
+                            padding: "10px 0px 0px 0px",
+                            textAlign: 'justify',
+                            fontStyle: 'italic'
+                        }}>{this.props.job}</p>
+                        <Divider/>
+                    </div>}
                     <div
                         style={{
                         display: 'flex',
@@ -97,6 +107,8 @@ class GridCard extends React.Component {
 GridCard.propTypes = {
     title: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
+    job: PropTypes.string,
+    height: PropTypes.string,
     avatar: PropTypes.string,
     linkedin: PropTypes.string,
     date: PropTypes.string,

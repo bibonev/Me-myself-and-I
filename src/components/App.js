@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';;
+import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router';
 
 import theme from './common/Theme.js';
@@ -45,7 +46,7 @@ class App extends React.Component {
                 padding: "40px"
             },
             selectedMenu: {
-                backgroundColor: "#f0d0ac"
+                backgroundColor: "white"
             }
         };
         return (

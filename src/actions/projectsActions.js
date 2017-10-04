@@ -5,77 +5,156 @@ export function showProjects() {
         type: types.SHOW_PROJECTS,
         projects: [
             {
-                name: "Spinal Cord Hackathon 1",
+                name: "The Bridge",
                 technologies: [
-                    'React', 'Node', 'Express', 'MongoDB'
+                    'JavaScript',
+                    'Python',
+                    'Django',
+                    'ReactJS',
+                    'Redux',
+                    'PostgreSQL'
                 ],
+                text: "Web platform for connecting customers with organisations.",
+                url: 'The-Bridge',
                 page: 1
             }, {
-                name: "Facebook Hackathon 2",
+                name: "N Side View",
                 technologies: [
-                    'React', 'Node', 'Express', 'MongoDB', 'Node-Red'
+                    'C#', 'C++'
                 ],
+                text: "The project considers a problem connected with digitization and visualization of" +
+                        " three-dimensional real objects, which the user wants to carry over into cybersp" +
+                        "ace. Creating, editing and visualization of models, which are received by the 2 " +
+                        "web cameras –Logitech c920, are the main aim of “NSideView”.",
+                url: 'NSideView',
                 page: 1
             }, {
-                name: "Spinal Cord Hackathon 3",
+                name: "Tic Tac Toe - Server",
                 technologies: [
-                    'C#', '.NET', 'Arduino', 'XNA'
+                    'Java', 'Networking'
                 ],
+                text: "TicTacToe Multiplayer Game for my Software Workshop cource.",
+                url: 'TicTacToe-Server',
+                page: 1
+            }, {
+                name: "Build View",
+                technologies: [
+                    'C#', 'WPF', 'C', 'C++'
+                ],
+                text: "The project considers a problem connected with digitization and visualization of" +
+                        " three-dimensional real objects which the user wants to carry over into cyberspa" +
+                        "ce. Creating, editing and visualization of models which are received by the devi" +
+                        "ce – Microsoft Kinect, are the main aim of “BuildView”.",
+                url: 'BuildView',
+                page: 1
+            }, {
+                name: "Abide By The Rules",
+                technologies: [
+                    'C#', 'WPF', 'XNA', '3D Studio Max'
+                ],
+                text: "Project which helps children to develop the skills of moving on the road safely." +
+                        " This project has been developed in 2011/2012, when I (B. Bonev) was at the age " +
+                        "of 14. The project has been used in some Bulgarian schools during 'Hour of the T" +
+                        "eacher' class.",
+                url: 'AbideByTheRules',
                 page: 2
             }, {
-                name: "Facebook Hackathon 4",
+                name: "Pacman Plus Plus",
                 technologies: [
-                    'React', 'Node', 'Express', 'MongoDB'
+                    'Java', 'Java FX'
                 ],
+                text: "Working in a team, we have produced a multiplayer-based variation of the classic" +
+                        " arcade game Pac Man. The end result of this engineering project is a functional" +
+                        " multiplayer game, whose core gameplay mechanics resemble those of its arcade pr" +
+                        "edecessor. The game we have developed tries to expand on what the original game " +
+                        "aimed to achieve.",
+                url: 'PacmanPlusPlus',
                 page: 2
             }, {
-                name: "Spinal Cord Hackathon 5",
+                name: "Domineering",
+                technologies: ['Java'],
+                text: "Java implementation of the mathematical game Domineering, using techniques again" +
+                        "st AI players such as heuristic functions.",
+                url: 'Domineering',
+                page: 2
+            }, {
+                name: 'Spinal Cord M&T',
                 technologies: [
-                    'React', 'Node', 'Express', 'MongoDB'
+                    'ReactJS', 'Redux', 'Node', 'Node-RED'
                 ],
+                text: 'An internal competition at IBM in the UK has led to technology that could potent' +
+                        'ially improve the quality of life for very young children with paraplegia and th' +
+                        'eir parents.',
+                url: 'spinal-cord-hackathon',
+                page: 2
+            }, {
+                name: 'Scrabble',
+                technologies: ['Haskell'],
+                text: 'Scrabble game written in Haskell as part of my university assignment',
+                url: 'Scrabble',
+                page: 3
+            },, {
+                name: 'Me, myself and I',
+                technologies: [
+                    'ReactJS', 'Redux'
+                ],
+                text: 'Website that describes myself, my experience and my interests.',
+                url: 'Me-myself-and-I',
                 page: 3
             }, {
-                name: "Facebook Hackathon 6",
+                name: "Father Christmas",
                 technologies: [
-                    'React', 'Node', 'Express', 'MongoDB'
+                    'Java', 'PostgreSQL'
                 ],
+                text: "Database application called FatherChristmas for the university course Databases." +
+                        " It allows basic queries for creating and dropping tables, as well as inserting " +
+                        "and retrieving of information from those tables.",
+                url: 'FatherChristmas',
                 page: 3
             }, {
-                name: "Spinal Cord Hackathon 7",
+                name: 'Pomodoro',
+                technologies: ['ReactJS'],
+                text: 'Pomodoro Technique implemented using React to enhance my skills and track my tim' +
+                        'e in a better way',
+                url: 'Pomodoro',
+                page: 3
+            }, {
+                name: "Draw Motion",
                 technologies: [
-                    'React', 'Node', 'Express', 'MongoDB'
+                    'Java', 'LeapMotion'
                 ],
+                text: "Java application that allows you to draw on the screen using leap motion.",
+                url: 'DrawMotion',
                 page: 4
             }, {
-                name: "Facebook Hackathon 8",
+                name: "Chartinity",
                 technologies: [
-                    'React', 'Node', 'Express', 'MongoDB'
+                    'Android', 'C++', 'Java'
                 ],
+                text: "An android application for generating editable charts from pictures.",
+                url: 'Chartinity',
                 page: 4
             }, {
-                name: "Spinal Cord Hackathon 9",
+                name: "Mood Location",
                 technologies: [
-                    'React', 'Node', 'Express', 'MongoDB'
+                    'Python',
+                    'Tensor Flow',
+                    'ReactJS',
+                    'Redux',
+                    'Twitter API',
+                    'Django'
                 ],
-                page: 5
+                text: "An application that determines the mood of people in specific location.",
+                url: 'MoodLoc',
+                page: 4
             }, {
-                name: "Facebook Hackathon 10",
+                name: "Tickit",
                 technologies: [
-                    'React', 'Node', 'Express', 'MongoDB'
+                    'ReactJS', 'Java Spring'
                 ],
-                page: 5
-            }, {
-                name: "Spinal Cord Hackathon 11",
-                technologies: [
-                    'React', 'Node', 'Express', 'MongoDB'
-                ],
-                page: 6
-            }, {
-                name: "Facebook Hackathon 12",
-                technologies: [
-                    'React', 'Node', 'Express', 'MongoDB'
-                ],
-                page: 6
+                text: "Facebook Hack 2017 London - Application for swapping tickets",
+                url: 'Tickit',
+                page: 4
             }
         ]
     };

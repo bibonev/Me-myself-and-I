@@ -84,10 +84,10 @@ class App extends React.Component {
                             open={!this.state.open}
                             width={300}
                             containerStyle={{
-                            backgroundColor: '#d4d3b4'
+                            backgroundColor: 'white'
                         }}>
                             <MenuItem disabled={true}>
-                                <Avatar src={require("../../assets/profile_picture.jpg")} size={275}/>
+                                <Avatar src={require("../../assets/profile_picture.png")} size={275}/>
                             </MenuItem>
                             <MenuItem
                                 style={this.context.location.pathname == "/"

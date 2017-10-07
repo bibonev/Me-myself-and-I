@@ -61,7 +61,8 @@ class GridCard extends React.Component {
                                         style={{
                                         margin: "20px 0px 0px 5px"
                                     }}
-                                        backgroundColor={blue300}>
+                                        backgroundColor={"#1D364D"}
+                                        labelColor={"white"}>
                                         {chip}
                                     </Chip>
                                 );

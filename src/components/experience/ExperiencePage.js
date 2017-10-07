@@ -50,7 +50,12 @@ class ExperiencePage extends React.Component {
 
         return (
             <div>
-                <Tabs value={value} onChange={(value) => this.handleChange(value)}>
+                <Tabs
+                    tabItemContainerStyle={{
+                    backgroundColor: "#1D364D"
+                }}
+                    value={value}
+                    onChange={(value) => this.handleChange(value)}>
                     <Tab label="Education" value="education">
                         <div
                             style={{

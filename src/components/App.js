@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router';
 
 import theme from './common/Theme.js';
+import {GitHub, Facebook, Instagram, LinkedIn, Email} from './common/Icons.js';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import Avatar from 'material-ui/Avatar';
@@ -11,6 +12,7 @@ import Dialog from 'material-ui/Dialog';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import PersonOutline from 'material-ui/svg-icons/social/person-outline';
+import Phone from 'material-ui/svg-icons/communication/phone';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import ActionCode from 'material-ui/svg-icons/action/code';
@@ -19,6 +21,7 @@ import ActionWork from 'material-ui/svg-icons/action/work';
 import ActionLanguages from 'material-ui/svg-icons/action/translate';
 import ActionHobbies from 'material-ui/svg-icons/action/favorite';
 import ActionAbout from 'material-ui/svg-icons/action/bookmark-border';
+import IconButton from 'material-ui/IconButton';
 
 class App extends React.Component {
     constructor() {
@@ -75,6 +78,9 @@ class App extends React.Component {
                         </div>
                     : <div>
                         <Drawer
+                            style={{
+                            position: 'absolute'
+                        }}
                             open={!this.state.open}
                             width={300}
                             containerStyle={{
@@ -112,7 +118,6 @@ class App extends React.Component {
                                 primaryText="Feedback"
                                 containerElement={< Link to = "/feedback" />}
                                 leftIcon={< ActionFeedback />}/>
-                            <Divider/>
                             <MenuItem
                                 style={this.context.location.pathname == "/hobbies"
                                 ? style.selectedMenu
@@ -120,21 +125,57 @@ class App extends React.Component {
                                 primaryText="Hobbies"
                                 containerElement={< Link to = "/hobbies" />}
                                 leftIcon={< ActionHobbies />}/>
-                            <MenuItem
-                                style={this.context.location.pathname == "/languages"
-                                ? style.selectedMenu
-                                : {}}
-                                primaryText="Langauges"
-                                containerElement={< Link to = "/languages" />}
-                                leftIcon={< ActionLanguages />}/>
-                            <Divider/>
-                            <MenuItem
-                                style={this.context.location.pathname == "/contact"
-                                ? style.selectedMenu
-                                : {}}
-                                primaryText="Contact"
-                                containerElement={< Link to = "/contact" />}
-                                leftIcon={< PersonOutline />}/>
+                            <div
+                                style={{
+                                position: 'fixed',
+                                bottom: 20,
+                                left: 20
+                            }}>
+                                <IconButton
+                                    href={"https://github.com/bibonev/"}
+                                    target="_blank"
+                                    tooltip="Follow me"
+                                    disableTouchRipple={true}
+                                    tooltipPosition="top-center">
+                                    <GitHub/>
+                                </IconButton>
+                                <IconButton
+                                    href={"https://www.facebook.com/Boyan.Bonev00"}
+                                    target="_blank"
+                                    tooltip="Add me"
+                                    touch={false}
+                                    disableTouchRipple={true}
+                                    tooltipPosition="top-center">
+                                    <Facebook/>
+                                </IconButton>
+                                <IconButton
+                                    href={"mailto:boyan.i.bonev@gmail.com"}
+                                    target="_blank"
+                                    tooltip="Email me"
+                                    touch={false}
+                                    disableTouchRipple={true}
+                                    tooltipPosition="top-center">
+                                    <Email/>
+                                </IconButton>
+                                <IconButton
+                                    href={"https://www.linkedin.com/in/bonevboyan/"}
+                                    target="_blank"
+                                    tooltip="Connect with me"
+                                    touch={false}
+                                    disableTouchRipple={true}
+                                    tooltipPosition="top-center">
+                                    <LinkedIn/>
+                                </IconButton>
+                                <IconButton
+                                    href={"tel:07401990788"}
+                                    target="_blank"
+                                    tooltip="Call me"
+                                    touch={false}
+                                    disableTouchRipple={true}
+                                    tooltipPosition="top-center">
+                                    <Phone/>
+                                </IconButton>
+                            </div>
                         </Drawer>
                         <Paper style={style.card}>
                             <div style={style.div}>

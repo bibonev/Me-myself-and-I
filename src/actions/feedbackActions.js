@@ -6,7 +6,7 @@ export function showFeedback() {
         feedbacks: [
             {
                 author: 'Adam Hicks',
-                position: 'CTO currently working at Contact Group',
+                position: 'Chief Technology Officer at Contact Group',
                 text: 'Boyan worked within our team as part of a summer placement. He was quick to pick' +
                         ' up new technologies and worked hard. Whilst working for our team he mainly focu' +
                         'ssed on .NET/C# development and JavaScript. He is friendly and an approachable c' +

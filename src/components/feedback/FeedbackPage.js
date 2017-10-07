@@ -49,7 +49,7 @@ class FeedbackPage extends React.Component {
                                 return (
                                     <GridCard
                                         style={{
-                                        margin: '20px 0 0 50px'
+                                        margin: '120px 0 0 50px'
                                     }}
                                         textStyle={{
                                         color: 'black',

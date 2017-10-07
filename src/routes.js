@@ -5,6 +5,7 @@ import HomePage from './components/home/HomePage.js';
 import ProjectsPage from './components/projects/ProjectsPage.js';
 import ExperiencePage from './components/experience/ExperiencePage.js';
 import FeedbackPage from './components/feedback/FeedbackPage.js';
+import HobbiesPage from './components/hobbies/HobbiesPage.js';
 
 export default(
     <Route path="/" component={App}>
@@ -12,8 +13,7 @@ export default(
         <Route path="projects" component={ProjectsPage}/>
         <Route path="experience" component={ExperiencePage}/>
         <Route path="feedback" component={FeedbackPage}/>
-        <Route path="hobbies" component={HomePage}/>
-        <Route path="languages" component={HomePage}/>
+        <Route path="hobbies" component={HobbiesPage}/>
         <Route path="contact" component={HomePage}/>
     </Route>
 );

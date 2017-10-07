@@ -4,7 +4,7 @@ import * as Colors from 'material-ui/styles/colors';
 const muiTheme = getMuiTheme({
     palette: {
         textColor: Colors.black,
-        primary1Color: Colors.lightBlue300,
+        primary1Color: "#1D364D",
         primary2Color: Colors.indigo700,
         accent1Color: Colors.white,
         pickerHeaderColor: Colors.darkBlack,

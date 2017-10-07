@@ -73,7 +73,10 @@ class App extends React.Component {
                                 ]}
                                     floatingLabelText="Search"
                                     fullWidth={true}
-                                    onNewRequest={this.onSubmit}/>
+                                    onNewRequest={this.onSubmit}
+                                    errorStyle={{
+                                    color: "#1D364D"
+                                }}/>
                             </Dialog>
                         </div>
                     : <div>

@@ -62,7 +62,7 @@ class ProjectsPage extends React.Component {
                                 return (
                                     <GridCard
                                         style={{
-                                        margin: '20px 0 0 50px'
+                                        margin: '10px auto'
                                     }}
                                         textStyle={{
                                         color: 'black',
@@ -82,10 +82,6 @@ class ProjectsPage extends React.Component {
                     textAlign: "center"
                 }}>
                     <Pagination
-                        styleRoot={{
-                        margin: '2px',
-                        display: "inline-block"
-                    }}
                         total={this.state.totalPages}
                         current={this.state.currentPage}
                         display={this.state.displayPages}

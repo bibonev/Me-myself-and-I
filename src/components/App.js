@@ -41,12 +41,12 @@ class App extends React.Component {
 
     render() {
         const style = {
-            card: {
-                margin: "0px 0px 0px 300px"
-            },
             div: {
+                margin: "0px 0px 0px 300px",
                 height: "100vh",
-                padding: "40px"
+                padding: "40px",
+                backgroundColor: 'white',
+                overflowY: 'auto'
             },
             selectedMenu: {
                 backgroundColor: "white"
@@ -180,11 +180,9 @@ class App extends React.Component {
                                 </IconButton>
                             </div>
                         </Drawer>
-                        <Paper style={style.card}>
-                            <div style={style.div}>
-                                {this.props.children}
-                            </div>
-                        </Paper>
+                        <div style={style.div}>
+                            {this.props.children}
+                        </div>
                     </div>}
             </MuiThemeProvider>
         );

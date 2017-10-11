@@ -44,43 +44,25 @@ class FeedbackPage extends React.Component {
                         .props
                         .feedbacks
                         .map(feedback => {
-                            const {currentPage} = this.state;
-                            if (feedback.page == currentPage) 
-                                return (
-                                    <GridCard
-                                        style={{
-                                        margin: '120px 0 0 50px'
-                                    }}
-                                        textStyle={{
-                                        color: 'black',
-                                        margin: '10px 10px 10px 30px'
-                                    }}
-                                        title={feedback.author}
-                                        job={feedback.position}
-                                        text={feedback.text}
-                                        avatar={feedback.image}
-                                        linkedin={feedback.linkedin}
-                                        date={feedback.date}
-                                        height={"440px"}
-                                        blockquote={true}></GridCard>
-                                );
-                            }
-                        )}
-                </div>
-                <br/>
-                <div style={{
-                    textAlign: "center"
-                }}>
-                    <Pagination
-                        styleRoot={{
-                        margin: '2px',
-                        display: "inline-block"
-                    }}
-                        total={this.state.totalPages}
-                        current={this.state.currentPage}
-                        display={this.state.displayPages}
-                        onChange=
-                        { currentPage => this.onChangePage(currentPage) }/>
+                            return (
+                                <GridCard
+                                    style={{
+                                    margin: '20px auto'
+                                }}
+                                    textStyle={{
+                                    color: 'black',
+                                    margin: '10px 10px 10px 30px'
+                                }}
+                                    title={feedback.author}
+                                    job={feedback.position}
+                                    text={feedback.text}
+                                    avatar={feedback.image}
+                                    linkedin={feedback.linkedin}
+                                    date={feedback.date}
+                                    height={"440px"}
+                                    blockquote={true}></GridCard>
+                            );
+                        })}
                 </div>
             </div>
         );

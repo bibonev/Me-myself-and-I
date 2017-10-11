@@ -1,4 +1,5 @@
 import React from 'react';
+import Divider from 'material-ui/Divider';
 
 class HomePage extends React.Component {
     constructor() {
@@ -9,12 +10,13 @@ class HomePage extends React.Component {
         return (
             <div>
                 <h1>Who am I?</h1>
-                <h2>How it all started...</h2>
-                <div
-                    style={{
-                    height: '200px',
-                    overflow: 'scroll'
-                }}>
+                <Divider/>
+                <h2 style={{
+                    margin: '10px'
+                }}>How it all started...</h2>
+                <Divider/>
+                <br/>
+                <div>
                     <p>I was 12 years old when I started studying PowerPoint at school. My
                         schoolmates were really impressed by the images and anumations, but not me. I
                         was interestesd in the macros I could create with some VB skills, those macros
@@ -38,12 +40,13 @@ class HomePage extends React.Component {
                     </p>
                 </div>
                 <br/>
-                <h2>How it continued...</h2>
-                <div
-                    style={{
-                    height: '200px',
-                    overflow: 'scroll'
-                }}>
+                <Divider/>
+                <h2 style={{
+                    margin: '10px'
+                }}>How it continued...</h2>
+                <Divider/>
+                <br/>
+                <div>
                     <p>My high school graduation was coming and I had to chooce my next
                         destionation, I had to answer to the question&nbsp;
                         <q>Where would I enhance my skills and gain more knowledge?</q>&nbsp; I chose
@@ -73,12 +76,13 @@ class HomePage extends React.Component {
                     </p>
                 </div>
                 <br/>
-                <h2>How it is now...</h2>
-                <div
-                    style={{
-                    height: '200px',
-                    overflow: 'scroll'
-                }}>
+                <Divider/>
+                <h2 style={{
+                    margin: '10px'
+                }}>How it is now...</h2>
+                <Divider/>
+                <br/>
+                <div>
                     <p>The department I am part of, at IBM, is called Platform Transformation
                         Center. I am assigned to the development team and we develop both internal and
                         external products for internal and external clients. The department is manly

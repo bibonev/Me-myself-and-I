@@ -57,7 +57,7 @@ export function showProjects() {
                         "of 14. The project has been used in some Bulgarian schools during 'Hour of the T" +
                         "eacher' class.",
                 url: 'AbideByTheRules',
-                page: 2
+                page: 1
             }, {
                 name: "Pacman Plus Plus",
                 technologies: [
@@ -69,7 +69,7 @@ export function showProjects() {
                         "edecessor. The game we have developed tries to expand on what the original game " +
                         "aimed to achieve.",
                 url: 'PacmanPlusPlus',
-                page: 2
+                page: 1
             }, {
                 name: "Domineering",
                 technologies: ['Java'],
@@ -92,7 +92,7 @@ export function showProjects() {
                 technologies: ['Haskell'],
                 text: 'Scrabble game written in Haskell as part of my university assignment',
                 url: 'Scrabble',
-                page: 3
+                page: 2
             },, {
                 name: 'Me, myself and I',
                 technologies: [
@@ -100,7 +100,7 @@ export function showProjects() {
                 ],
                 text: 'Website that describes myself, my experience and my interests.',
                 url: 'Me-myself-and-I',
-                page: 3
+                page: 2
             }, {
                 name: "Father Christmas",
                 technologies: [
@@ -110,14 +110,14 @@ export function showProjects() {
                         " It allows basic queries for creating and dropping tables, as well as inserting " +
                         "and retrieving of information from those tables.",
                 url: 'FatherChristmas',
-                page: 3
+                page: 2
             }, {
                 name: 'Pomodoro',
                 technologies: ['ReactJS'],
                 text: 'Pomodoro Technique implemented using React to enhance my skills and track my tim' +
                         'e in a better way',
                 url: 'Pomodoro',
-                page: 3
+                page: 2
             }, {
                 name: "Draw Motion",
                 technologies: [
@@ -125,7 +125,7 @@ export function showProjects() {
                 ],
                 text: "Java application that allows you to draw on the screen using leap motion.",
                 url: 'DrawMotion',
-                page: 4
+                page: 3
             }, {
                 name: "Chartinity",
                 technologies: [
@@ -133,7 +133,7 @@ export function showProjects() {
                 ],
                 text: "An android application for generating editable charts from pictures.",
                 url: 'Chartinity',
-                page: 4
+                page: 3
             }, {
                 name: "Mood Location",
                 technologies: [
@@ -146,7 +146,7 @@ export function showProjects() {
                 ],
                 text: "An application that determines the mood of people in specific location.",
                 url: 'MoodLoc',
-                page: 4
+                page: 3
             }, {
                 name: "Tickit",
                 technologies: [
@@ -154,7 +154,7 @@ export function showProjects() {
                 ],
                 text: "Facebook Hack 2017 London - Application for swapping tickets",
                 url: 'Tickit',
-                page: 4
+                page: 3
             }
         ]
     };

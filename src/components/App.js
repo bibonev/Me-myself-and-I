@@ -41,12 +41,15 @@ class App extends React.Component {
 
     render() {
         const style = {
-            card: {
-                margin: "0px 0px 0px 300px"
+            paper: {
+                margin: "0px 0px 0px 300px",
+                height: "100vh",
+                padding: "40px",
+                overflowY: 'auto'
             },
             div: {
                 height: "100vh",
-                padding: "40px"
+                backgroundColor: 'white'
             },
             selectedMenu: {
                 backgroundColor: "white"
@@ -54,7 +57,7 @@ class App extends React.Component {
         };
         return (
             <MuiThemeProvider muiTheme={theme}>
-                {this.state.open
+                {this.state.open && this.context.location.pathname === "/"
                     ? <div>
                             <Dialog
                                 title="What skills are you looking for from Boyan...?"
@@ -84,7 +87,7 @@ class App extends React.Component {
                             style={{
                             position: 'absolute'
                         }}
-                            open={!this.state.open}
+                            open={true}
                             width={300}
                             containerStyle={{
                             backgroundColor: 'white'
@@ -93,7 +96,7 @@ class App extends React.Component {
                                 <Avatar src={require("../../assets/profile_picture.png")} size={275}/>
                             </MenuItem>
                             <MenuItem
-                                style={this.context.location.pathname == "/"
+                                style={this.context.location.pathname === "/"
                                 ? style.selectedMenu
                                 : {}}
                                 primaryText="About"
@@ -101,28 +104,28 @@ class App extends React.Component {
                                 leftIcon={< ActionAbout />}/>
                             <Divider/>
                             <MenuItem
-                                style={this.context.location.pathname == "/projects"
+                                style={this.context.location.pathname === "/projects"
                                 ? style.selectedMenu
                                 : {}}
                                 primaryText="Projects"
                                 containerElement={< Link to = "/projects" />}
                                 leftIcon={< ActionCode />}/>
                             <MenuItem
-                                style={this.context.location.pathname == "/experience"
+                                style={this.context.location.pathname === "/experience"
                                 ? style.selectedMenu
                                 : {}}
                                 primaryText="Experience"
                                 containerElement={< Link to = "/experience" />}
                                 leftIcon={< ActionWork />}/>
                             <MenuItem
-                                style={this.context.location.pathname == "/feedback"
+                                style={this.context.location.pathname === "/feedback"
                                 ? style.selectedMenu
                                 : {}}
                                 primaryText="Feedback"
                                 containerElement={< Link to = "/feedback" />}
                                 leftIcon={< ActionFeedback />}/>
                             <MenuItem
-                                style={this.context.location.pathname == "/hobbies"
+                                style={this.context.location.pathname === "/hobbies"
                                 ? style.selectedMenu
                                 : {}}
                                 primaryText="Hobbies"
@@ -180,11 +183,11 @@ class App extends React.Component {
                                 </IconButton>
                             </div>
                         </Drawer>
-                        <Paper style={style.card}>
-                            <div style={style.div}>
+                        <div style={style.div}>
+                            <Paper style={style.paper} id={"paper"}>
                                 {this.props.children}
-                            </div>
-                        </Paper>
+                            </Paper>
+                        </div>
                     </div>}
             </MuiThemeProvider>
         );

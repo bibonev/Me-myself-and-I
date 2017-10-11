@@ -46,14 +46,13 @@ class HobbiesPage extends React.Component {
                     .hobbies
                     .map(hobby => {
                         const {currentPage} = this.state;
-                        console.log("Hobbie: ", hobby);
                         if (hobby.page == currentPage) 
                             return (
                                 <Card
                                     style={{
                                     height: "670px",
                                     width: "550px",
-                                    margin: "0px 0px 0px 250px",
+                                    margin: "10px auto",
                                     padding: "30px"
                                 }}>
                                     <CardMedia>

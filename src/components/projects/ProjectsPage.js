@@ -15,8 +15,8 @@ class ProjectsPage extends React.Component {
     constructor() {
         super();
         this.state = {
-            totalPages: 4,
-            displayPages: 4,
+            totalPages: 3,
+            displayPages: 3,
             currentPage: 1
         };
     }
@@ -47,7 +47,7 @@ class ProjectsPage extends React.Component {
 
     render() {
         return (
-            <div>
+            <div id={'paper2'}>
                 <div
                     style={{
                     display: 'flex',
@@ -62,7 +62,7 @@ class ProjectsPage extends React.Component {
                                 return (
                                     <GridCard
                                         style={{
-                                        margin: '20px 0 0 50px'
+                                        margin: '20px auto'
                                     }}
                                         textStyle={{
                                         color: 'black',
@@ -82,10 +82,6 @@ class ProjectsPage extends React.Component {
                     textAlign: "center"
                 }}>
                     <Pagination
-                        styleRoot={{
-                        margin: '2px',
-                        display: "inline-block"
-                    }}
                         total={this.state.totalPages}
                         current={this.state.currentPage}
                         display={this.state.displayPages}

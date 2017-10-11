@@ -41,12 +41,15 @@ class App extends React.Component {
 
     render() {
         const style = {
-            div: {
+            paper: {
                 margin: "0px 0px 0px 300px",
                 height: "100vh",
                 padding: "40px",
-                backgroundColor: 'white',
                 overflowY: 'auto'
+            },
+            div: {
+                height: "100vh",
+                backgroundColor: 'white'
             },
             selectedMenu: {
                 backgroundColor: "white"
@@ -54,7 +57,7 @@ class App extends React.Component {
         };
         return (
             <MuiThemeProvider muiTheme={theme}>
-                {this.state.open
+                {this.state.open && this.context.location.pathname === "/"
                     ? <div>
                             <Dialog
                                 title="What skills are you looking for from Boyan...?"
@@ -84,7 +87,7 @@ class App extends React.Component {
                             style={{
                             position: 'absolute'
                         }}
-                            open={!this.state.open}
+                            open={true}
                             width={300}
                             containerStyle={{
                             backgroundColor: 'white'
@@ -93,7 +96,7 @@ class App extends React.Component {
                                 <Avatar src={require("../../assets/profile_picture.png")} size={275}/>
                             </MenuItem>
                             <MenuItem
-                                style={this.context.location.pathname == "/"
+                                style={this.context.location.pathname === "/"
                                 ? style.selectedMenu
                                 : {}}
                                 primaryText="About"
@@ -101,28 +104,28 @@ class App extends React.Component {
                                 leftIcon={< ActionAbout />}/>
                             <Divider/>
                             <MenuItem
-                                style={this.context.location.pathname == "/projects"
+                                style={this.context.location.pathname === "/projects"
                                 ? style.selectedMenu
                                 : {}}
                                 primaryText="Projects"
                                 containerElement={< Link to = "/projects" />}
                                 leftIcon={< ActionCode />}/>
                             <MenuItem
-                                style={this.context.location.pathname == "/experience"
+                                style={this.context.location.pathname === "/experience"
                                 ? style.selectedMenu
                                 : {}}
                                 primaryText="Experience"
                                 containerElement={< Link to = "/experience" />}
                                 leftIcon={< ActionWork />}/>
                             <MenuItem
-                                style={this.context.location.pathname == "/feedback"
+                                style={this.context.location.pathname === "/feedback"
                                 ? style.selectedMenu
                                 : {}}
                                 primaryText="Feedback"
                                 containerElement={< Link to = "/feedback" />}
                                 leftIcon={< ActionFeedback />}/>
                             <MenuItem
-                                style={this.context.location.pathname == "/hobbies"
+                                style={this.context.location.pathname === "/hobbies"
                                 ? style.selectedMenu
                                 : {}}
                                 primaryText="Hobbies"
@@ -181,7 +184,9 @@ class App extends React.Component {
                             </div>
                         </Drawer>
                         <div style={style.div}>
-                            {this.props.children}
+                            <Paper style={style.paper} id={"paper"}>
+                                {this.props.children}
+                            </Paper>
                         </div>
                     </div>}
             </MuiThemeProvider>

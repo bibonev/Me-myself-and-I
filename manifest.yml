@@ -1,0 +1,9 @@
+applications:
+- name: Portfolio - Boyan Bonev
+  path: .
+  memory: 512M
+  instances: 1
+  host: bbonev
+  domain: eu-gb.mybluemix.net
+  disk_quota: 1024M
+  buildpack: staticfile_buildpack

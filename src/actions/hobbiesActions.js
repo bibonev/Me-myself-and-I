@@ -12,7 +12,7 @@ export function showHobbies() {
                         'it brings me. If we share the same interest, please do contact me - I would be m' +
                         'ore than happy to have a chat about the best game in the world.',
                 image: 'old-trafford.jpg',
-                page: 1
+                page: 6
             }, {
                 name: 'Gym',
                 text: 'I have always wanted to become well-built. I have trained different sports since' +
@@ -24,7 +24,7 @@ export function showHobbies() {
                         'inish work, four times per week and after every training I feel more and more al' +
                         'ive that brings me huge ammount of happiness.',
                 image: 'gym.jpg',
-                page: 2
+                page: 5
             }, {
                 name: 'Cooking',
                 text: 'I was really bad in the kitchen before I had moved to UK. Why? - I had my amazin' +
@@ -35,7 +35,7 @@ export function showHobbies() {
                         'rted cooking once in a while for my frinds who say that I make one of the best ' +
                         '\'Musaka\' they have ever eaten (traditional mediterranean meal).',
                 image: 'cooking.jpg',
-                page: 3
+                page: 4
             }, {
                 name: 'Spending time with my family and friends',
                 text: 'All I want in the end of the day is just to have a chat with my prants and my br' +
@@ -44,7 +44,7 @@ export function showHobbies() {
                         'glass of wine with your best friends in the end of the week just to reduce the p' +
                         'ressure.',
                 image: 'family-friends.jpg',
-                page: 4
+                page: 3
             }, {
                 name: 'Hackathons',
                 text: 'After  my family, my friends and Manchester United, there is one more thing that' +
@@ -55,7 +55,7 @@ export function showHobbies() {
                         'athonts until now - couple of tiems BrumHack, HackNotts, Facebook Hacakthon and ' +
                         'many more. If you have a chance to go to hackathon - take it.',
                 image: 'hackathons.jpg',
-                page: 5
+                page: 1
             }, {
                 name: 'Reading (more like listening to audio books)',
                 text: 'That has been a recent hobby of mine. I have started listening to Audio books, u' +
@@ -64,7 +64,7 @@ export function showHobbies() {
                         'ned.  So far, I have read The Lost Symbol and The Girl with the Dragon Tattoo. I' +
                         ' am reading Soft Skills: The Software Developer\'s Life Manual now.',
                 image: 'audiobooks.jpg',
-                page: 6
+                page: 2
             }
         ]
     });

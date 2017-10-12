@@ -23,6 +23,10 @@ import ActionHobbies from 'material-ui/svg-icons/action/favorite';
 import ActionAbout from 'material-ui/svg-icons/action/bookmark-border';
 import IconButton from 'material-ui/IconButton';
 
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as searchActions from '../actions/searchActions';
+
 class App extends React.Component {
     constructor() {
         super();
@@ -35,7 +39,11 @@ class App extends React.Component {
             .bind(this);
     }
 
-    onSubmit() {
+    onSubmit(req) {
+        this
+            .props
+            .actions
+            .addTechnologies(req.split(','));
         this.setState({open: false});
     }
 
@@ -52,7 +60,8 @@ class App extends React.Component {
                 backgroundColor: 'white'
             },
             selectedMenu: {
-                backgroundColor: "white"
+                backgroundColor: "#1D364D",
+                color: 'white'
             }
         };
         return (
@@ -76,7 +85,7 @@ class App extends React.Component {
                                 ]}
                                     floatingLabelText="Search"
                                     fullWidth={true}
-                                    onNewRequest={this.onSubmit}
+                                    onNewRequest={(req) => this.onSubmit(req)}
                                     errorStyle={{
                                     color: "#1D364D"
                                 }}/>
@@ -96,11 +105,11 @@ class App extends React.Component {
                                 <Avatar src={require("../../assets/profile_picture.png")} size={275}/>
                             </MenuItem>
                             <MenuItem
-                                style={this.context.location.pathname === "/"
+                                style={this.state.search === false && this.context.location.pathname === "/home"
                                 ? style.selectedMenu
                                 : {}}
                                 primaryText="About"
-                                containerElement={< Link to = "/" />}
+                                containerElement={< Link to = "/home" />}
                                 leftIcon={< ActionAbout />}/>
                             <Divider/>
                             <MenuItem
@@ -195,7 +204,8 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-    children: PropTypes.object.isRequred
+    children: PropTypes.object.isRequred,
+    actions: PropTypes.object.isRequired
 };
 
 App.contextTypes = {
@@ -203,4 +213,10 @@ App.contextTypes = {
     location: React.PropTypes.object
 }
 
-export default App;
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(searchActions, dispatch)
+    };
+}
+
+export default connect(null, mapDispatchToProps)(App);

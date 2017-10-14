@@ -1,5 +1,7 @@
 import React from 'react';
 import Divider from 'material-ui/Divider';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 class HomePage extends React.Component {
     constructor() {
@@ -30,13 +32,70 @@ class HomePage extends React.Component {
                         that time.
                     </p>
                     <p>
-                        The same year I was accepted in the System Programming class of&nbsp;
-                        <q>High School of Mathematics Acad. Kiril Popov, Plovdiv</q>. The motivational
-                        environment made me learn lots of new programming languges and technologies like
-                        C#, WPF, XNA, C++, etc. Eventually, I made it to the labaratory of Robotics,
-                        Mechanics and Telemechanics in the local university. I met Professor, PhD.
-                        Alexander Penev who became my mentor and we started developing new projects with
-                        which I won many national and international competitions.
+                        <span>
+                            The same year I was accepted in the System Programming class of&nbsp;
+                            <q>High School of Mathematics Acad. Kiril Popov, Plovdiv</q>. The motivational
+                            environment made me learn lots of new programming languges and technologies
+                            like&nbsp;
+                        </span>
+                        <span>
+                            {this
+                                .props
+                                .technologies
+                                .includes('c#')
+                                ? <span
+                                        style={{
+                                        background: '#1F57A4',
+                                        borderRadius: '18px',
+                                        color: 'white'
+                                    }}>C#</span>
+                                : <span>C#</span>
+}
+                            <span>,&nbsp;</span>
+                            {this
+                                .props
+                                .technologies
+                                .includes('wpf')
+                                ? <span
+                                        style={{
+                                        background: '#1F57A4',
+                                        borderRadius: '5px',
+                                        color: 'white'
+                                    }}>WPF</span>
+                                : <span>WPF</span>
+}
+                            <span>,&nbsp;</span>
+                            {this
+                                .props
+                                .technologies
+                                .includes('xna')
+                                ? <span
+                                        style={{
+                                        background: '#1F57A4',
+                                        borderRadius: '5px',
+                                        color: 'white'
+                                    }}>XNA</span>
+                                : <span>XNA</span>
+}
+                            <span>,&nbsp;</span>
+                            {this
+                                .props
+                                .technologies
+                                .includes('c++')
+                                ? <span
+                                        style={{
+                                        background: '#1F57A4',
+                                        borderRadius: '18px',
+                                        color: 'white'
+                                    }}>C++</span>
+                                : <span>C++</span>
+}
+                        </span>
+                        <span>, etc. Eventually, I made it to the labaratory of Robotics, Mechanics and
+                            Telemechanics in the local university. I met Professor, PhD. Alexander Penev who
+                            became my mentor and we started developing new projects with which I won many
+                            national and international competitions.
+                        </span>
                     </p>
                 </div>
                 <br/>
@@ -100,4 +159,12 @@ class HomePage extends React.Component {
     }
 }
 
-export default HomePage;
+HomePage.propTypes = {
+    technologies: PropTypes.array.isRequired
+};
+
+function mapStateToProps(state, ownProps) {
+    return {technologies: state.search};
+}
+
+export default connect(mapStateToProps)(HomePage);

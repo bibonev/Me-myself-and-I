@@ -19,7 +19,7 @@ class ExperiencePage extends React.Component {
             stepIndexEducation: 0,
             stepIndexComercial: 0,
             stepIndexVolunteering: 0,
-            value: 'education'
+            value: 'comercial'
         };
         this.handleChange = this
             .handleChange
@@ -118,7 +118,7 @@ class ExperiencePage extends React.Component {
                             </Stepper>
                         </div>
                     </Tab>
-                    <Tab label="Comercial" value="comercial">
+                    <Tab label="Work" value="comercial">
                         <div
                             style={{
                             maxWidth: 980,
@@ -166,8 +166,11 @@ class ExperiencePage extends React.Component {
                                                         {stage
                                                             .points
                                                             .map(point => {
+                                                                point.toLowerCase
                                                                 return (
-                                                                    <li>{point}</li>
+                                                                    <li>
+                                                                        <p>{point}</p>
+                                                                    </li>
                                                                 );
                                                             })}
                                                     </ul>

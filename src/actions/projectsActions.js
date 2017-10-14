@@ -10,9 +10,9 @@ export function showProjects() {
                     'JavaScript',
                     'Python',
                     'Django',
-                    'ReactJS',
+                    'React',
                     'Redux',
-                    'PostgreSQL'
+                    'SQL'
                 ],
                 text: "Web platform for connecting customers with organisations.",
                 url: 'The-Bridge',
@@ -80,7 +80,7 @@ export function showProjects() {
             }, {
                 name: 'Spinal Cord M&T',
                 technologies: [
-                    'ReactJS', 'Redux', 'Node', 'Node-RED'
+                    'React', 'Redux', 'Node', 'Node-RED'
                 ],
                 text: 'An internal competition at IBM in the UK has led to technology that could potent' +
                         'ially improve the quality of life for very young children with paraplegia and th' +
@@ -96,7 +96,7 @@ export function showProjects() {
             },, {
                 name: 'Me, myself and I',
                 technologies: [
-                    'ReactJS', 'Redux'
+                    'React', 'Redux'
                 ],
                 text: 'Website that describes myself, my experience and my interests.',
                 url: 'Me-myself-and-I',
@@ -104,7 +104,7 @@ export function showProjects() {
             }, {
                 name: "Father Christmas",
                 technologies: [
-                    'Java', 'PostgreSQL'
+                    'Java', 'SQL'
                 ],
                 text: "Database application called FatherChristmas for the university course Databases." +
                         " It allows basic queries for creating and dropping tables, as well as inserting " +
@@ -113,7 +113,7 @@ export function showProjects() {
                 page: 2
             }, {
                 name: 'Pomodoro',
-                technologies: ['ReactJS'],
+                technologies: ['React'],
                 text: 'Pomodoro Technique implemented using React to enhance my skills and track my tim' +
                         'e in a better way',
                 url: 'Pomodoro',
@@ -121,7 +121,7 @@ export function showProjects() {
             }, {
                 name: "Draw Motion",
                 technologies: [
-                    'Java', 'LeapMotion'
+                    'Java', 'Leap Motion'
                 ],
                 text: "Java application that allows you to draw on the screen using leap motion.",
                 url: 'DrawMotion',
@@ -139,7 +139,7 @@ export function showProjects() {
                 technologies: [
                     'Python',
                     'Tensor Flow',
-                    'ReactJS',
+                    'React',
                     'Redux',
                     'Twitter API',
                     'Django'
@@ -150,7 +150,7 @@ export function showProjects() {
             }, {
                 name: "Tickit",
                 technologies: [
-                    'ReactJS', 'Java Spring'
+                    'React', 'Java Spring'
                 ],
                 text: "Facebook Hack 2017 London - Application for swapping tickets",
                 url: 'Tickit',

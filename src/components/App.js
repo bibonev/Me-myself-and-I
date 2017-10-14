@@ -43,7 +43,7 @@ class App extends React.Component {
         this
             .props
             .actions
-            .addTechnologies(req.split(','));
+            .addTechnologies(req.replace(/ /g, '').toLowerCase().split(','));
         this.setState({open: false});
     }
 
@@ -81,14 +81,12 @@ class App extends React.Component {
                                     'Angular 2',
                                     '.NET',
                                     'ASP',
-                                    'Python'
+                                    'Python',
+                                    'Docker'
                                 ]}
                                     floatingLabelText="Search"
                                     fullWidth={true}
-                                    onNewRequest={(req) => this.onSubmit(req)}
-                                    errorStyle={{
-                                    color: "#1D364D"
-                                }}/>
+                                    onNewRequest={(req) => this.onSubmit(req)}/>
                             </Dialog>
                         </div>
                     : <div>
@@ -105,7 +103,7 @@ class App extends React.Component {
                                 <Avatar src={require("../../assets/profile_picture.png")} size={275}/>
                             </MenuItem>
                             <MenuItem
-                                style={this.state.search === false && this.context.location.pathname === "/home"
+                                style={this.context.location.pathname === "/home"
                                 ? style.selectedMenu
                                 : {}}
                                 primaryText="About"

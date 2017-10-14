@@ -10,7 +10,7 @@ import SearchResultsPage from './components/search-results/SearchResultsPage';
 
 export default(
     <Route path="/" component={App}>
-        <IndexRoute component={SearchResultsPage}/>
+        <IndexRoute component={HomePage}/>
         <Route path="home" component={HomePage}/>
         <Route path="projects" component={ProjectsPage}/>
         <Route path="experience" component={ExperiencePage}/>

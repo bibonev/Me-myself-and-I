@@ -43,7 +43,7 @@ class App extends React.Component {
         this
             .props
             .actions
-            .addTechnologies(req.replace(/ /g, '').toLowerCase().split(','));
+            .addTechnologies(req.replace(/ /g, '').replace(/\d*[.]?\d*/g, '').toLowerCase().split(','));
         this.setState({open: false});
     }
 

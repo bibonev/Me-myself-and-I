@@ -166,10 +166,41 @@ class ExperiencePage extends React.Component {
                                                         {stage
                                                             .points
                                                             .map(point => {
-                                                                point.toLowerCase
+                                                                let pointAsArray = point
+                                                                    .toLowerCase()
+                                                                    .split(' ');
+                                                                let keyWords = [];
+                                                                pointAsArray.forEach(function (element) {
+                                                                    if (this.props.technologies.includes(element)) {
+                                                                        keyWords.push(element);
+                                                                    }
+                                                                }, this);
+
                                                                 return (
                                                                     <li>
-                                                                        <p>{point}</p>
+                                                                        <p>
+                                                                            {point
+                                                                                .split(' ')
+                                                                                .map(p => {
+                                                                                    if (keyWords.includes(p.toLowerCase())) {
+                                                                                        return (
+                                                                                            <span>
+                                                                                                <span
+                                                                                                    style={{
+                                                                                                    background: '#1F57A4',
+                                                                                                    borderRadius: '18px',
+                                                                                                    color: 'white'
+                                                                                                }}>{p}</span>
+                                                                                                <span>&nbsp;</span>
+                                                                                            </span>
+                                                                                        );
+                                                                                    } else {
+                                                                                        return (
+                                                                                            <span>{p}&nbsp;</span>
+                                                                                        );
+                                                                                    }
+                                                                                })}
+                                                                        </p>
                                                                     </li>
                                                                 );
                                                             })}
@@ -258,11 +289,12 @@ class ExperiencePage extends React.Component {
 
 ExperiencePage.propTypes = {
     actions: PropTypes.object.isRequired,
-    experience: PropTypes.object.isRequired
+    experience: PropTypes.object.isRequired,
+    technologies: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
-    return {experience: state.experience};
+    return {experience: state.experience, technologies: state.search};
 }
 
 function mapDispatchToProps(dispatch) {

@@ -24,22 +24,22 @@ var hobbies = [
         page: 5
     }, {
         name: 'Cooking',
-        text: 'I was really bad in the kitchen before I had moved to UK. Why? - I had my amazin' +
-                'g mom cooking for me. I must be honest, those were the best years for my stomach' +
-                '. However, once I started my first year at the university, the cook in me has ri' +
-                'sen. I started with some simple things, increasing the difficulty step by step u' +
-                'ntil I have reached a level good enough to actually enjoy what I am doing. I sta' +
-                'rted cooking once in a while for my frinds who say that I make one of the best ' +
-                '\'Musaka\' they have ever eaten (traditional mediterranean meal).',
+        text: 'I was really bad in the kitchen before I moved to UK. Why? - I had my amazing mo' +
+                'm cooking for me. I must be honest, those were the best years for my stomach. Ho' +
+                'wever, once I started my first year at the university, the cook in me has risen.' +
+                ' I started with some simple things, increasing the difficulty step by step until' +
+                ' I have reached a level good enough to actually enjoy what I am doing. I started' +
+                ' cooking once in a while for my frinds who are saying that I make one of the bes' +
+                't \'Musaka\' they have ever eaten (traditional mediterranean meal).',
         image: 'cooking.jpg',
         page: 4
     }, {
         name: 'Spending time with my family and friends',
-        text: 'All I want in the end of the day is just to have a chat with my prants and my br' +
-                'other. If there was a problem at work or uni and I share it with them, I feel mu' +
-                'ch better after that. However, there is nothing better than a pine of beer or a ' +
-                'glass of wine with your best friends in the end of the week just to reduce the p' +
-                'ressure.',
+        text: 'All I want in the end of the day is just to have a chat with my parents and my b' +
+                'rother. If there was a problem at work or uni and I share it with them, I feel m' +
+                'uch better after that. However, there is nothing better than a pine of beer or a' +
+                ' glass of wine with your best friends in the end of the week just to reduce the ' +
+                'pressure.',
         image: 'family-friends.jpg',
         page: 3
     }, {
@@ -49,17 +49,17 @@ var hobbies = [
                 'or just two days is marvelous. I enjoy exploring new technologies and hackathons' +
                 ' are the best place to do that. Moreover, you can come up with so amazing ideas ' +
                 'as the brainstroming tends to be really productive. I have attended so many hack' +
-                'athonts until now - couple of tiems BrumHack, HackNotts, Facebook Hacakthon and ' +
-                'many more. If you have a chance to go to hackathon - take it.',
+                'athonts until now - couple of BrumHacks, HackNotts, Facebook Hacakthon and many ' +
+                'more. If you have a chance to go to hackathon - take it.',
         image: 'hackathons.jpg',
         page: 1
     }, {
-        name: 'Reading (more like listening to audio books)',
-        text: 'That has been a recent hobby of mine. I have started listening to Audio books, u' +
-                'sing Audible for the last couple of months. I must say that the time I spent for' +
-                ' getting so much information, out of a book, is much less that I have ever imagi' +
-                'ned.  So far, I have read The Lost Symbol and The Girl with the Dragon Tattoo. I' +
-                ' am reading Soft Skills: The Software Developer\'s Life Manual now.',
+        name: 'Reading (listening to audio) books',
+        text: 'That has been a recent hobby of mine. I started listening to audio books, using ' +
+                'Audible for the last couple of months. I must say that the time I spent for gett' +
+                'ing so much information, out of a book, is much less that I had ever imagined.  ' +
+                'So far, I have read The Lost Symbol and The Girl with the Dragon Tattoo. At the ' +
+                'moment, I am reading Soft Skills: The Software Developer\'s Life Manual now.',
         image: 'audiobooks.jpg',
         page: 2
     }

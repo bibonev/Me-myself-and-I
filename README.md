@@ -6,3 +6,16 @@ Website that describes me as a person, my experience and my interests. It helps 
 - Redux
 - Node
 - Material UI
+
+# Run
+Locally:
+
+```
+npm start
+```
+
+Build for production:
+```
+npm run build
+```
+

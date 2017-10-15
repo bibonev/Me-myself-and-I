@@ -1,6 +1,11 @@
 import * as types from '../actions/actionTypes';
 
-export default function hobbiesReducers(state = [], action) {
+const initialState = {
+    values: [],
+    count: 0
+}
+
+export default function hobbiesReducers(state = initialState, action) {
     switch (action.type) {
         case types.SHOW_HOBBIES:
             return {

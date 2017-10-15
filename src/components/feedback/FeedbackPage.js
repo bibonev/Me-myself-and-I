@@ -75,6 +75,7 @@ FeedbackPage.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
+    console.log("STATE: ", state);
     return {feedbacks: state.feedbacks.values};
 }
 

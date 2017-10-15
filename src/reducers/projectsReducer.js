@@ -1,6 +1,11 @@
 import * as types from '../actions/actionTypes';
 
-export default function projectsReducers(state = [], action) {
+const initialState = {
+    values: [],
+    count: 0
+}
+
+export default function projectsReducers(state = initialState, action) {
     switch (action.type) {
         case types.SHOW_PROJECTS:
             return {

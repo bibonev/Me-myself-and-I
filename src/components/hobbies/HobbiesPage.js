@@ -102,7 +102,7 @@ HobbiesPage.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-    return {hobbies: state.hobbies};
+    return {hobbies: state.hobbies.values};
 }
 
 function mapDispatchToProps(dispatch) {

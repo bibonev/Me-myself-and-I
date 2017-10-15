@@ -22,6 +22,8 @@ import ActionLanguages from 'material-ui/svg-icons/action/translate';
 import ActionHobbies from 'material-ui/svg-icons/action/favorite';
 import ActionAbout from 'material-ui/svg-icons/action/bookmark-border';
 import IconButton from 'material-ui/IconButton';
+import Badge from 'material-ui/Badge';
+import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
 
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -37,7 +39,11 @@ class App extends React.Component {
         super();
 
         this.state = {
-            open: true
+            open: true,
+            experience: false,
+            projects: false,
+            hobbies: false,
+            feedback: false
         };
         this.onSubmit = this
             .onSubmit
@@ -79,12 +85,43 @@ class App extends React.Component {
         this.setState({open: false});
     }
 
-    render() {
-        console.log("COUNT PROJECTS: ", this.props.countProjects);
-        console.log("COUNT EXPERIENCE: ", this.props.countExperience);
-        console.log("COUNT FEEDBACK: ", this.props.countFeedback);
-        console.log("COUNT HOBBIES: ", this.props.countHobbies);
+    getNotificationIcon(value, selected) {
+        let badgeColor = selected
+            ? '#DFE6EB'
+            : '#1D364D';
+        let notificationColor = selected
+            ? 'white'
+            : 'black';
+        let textColor = selected
+            ? 'black'
+            : 'white';
 
+        console.log("VALUE: ", value);
+
+        return (
+            <Badge
+                badgeContent={value}
+                badgeStyle={{
+                top: 12,
+                right: 12,
+                backgroundColor: badgeColor,
+                color: textColor
+            }}
+                style={{
+                position: 'absolute',
+                top: -30,
+                right: 5
+            }}
+                primary={true}>
+                <NotificationsIcon
+                    style={{
+                    color: notificationColor
+                }}/>
+            </Badge>
+        );
+    }
+
+    render() {
         const style = {
             paper: {
                 margin: "0px 0px 0px 300px",
@@ -101,6 +138,8 @@ class App extends React.Component {
                 color: 'white'
             }
         };
+
+        console.log("PROJECTS: ", this.props.countProjects);
 
         return (
             <MuiThemeProvider muiTheme={theme}>
@@ -141,7 +180,7 @@ class App extends React.Component {
                                 <Avatar src={require("../../assets/profile_picture.png")} size={275}/>
                             </MenuItem>
                             <MenuItem
-                                style={this.context.location.pathname === "/about"
+                                style={this.context.location.pathname === "/about" || this.context.location.pathname === "/"
                                 ? style.selectedMenu
                                 : {}}
                                 primaryText="About"
@@ -154,28 +193,40 @@ class App extends React.Component {
                                 : {}}
                                 primaryText="Projects"
                                 containerElement={< Link to = "/projects" />}
-                                leftIcon={< ActionCode />}/>
+                                leftIcon={< ActionCode />}
+                                rightIcon={this.context.location.pathname === "/projects" && this.props.countProjects !== 0
+                                ? this.getNotificationIcon(this.props.countProjects, true)
+                                : this.props.countProjects !== 0 && this.getNotificationIcon(this.props.countProjects, false)}/>
                             <MenuItem
                                 style={this.context.location.pathname === "/experience"
                                 ? style.selectedMenu
                                 : {}}
                                 primaryText="Experience"
                                 containerElement={< Link to = "/experience" />}
-                                leftIcon={< ActionWork />}/>
+                                leftIcon={< ActionWork />}
+                                rightIcon={this.context.location.pathname === "/experience" && this.props.countExperience !== 0
+                                ? this.getNotificationIcon(this.props.countExperience, true)
+                                : this.props.countExperience !== 0 && this.getNotificationIcon(this.props.countExperience, false)}/>
                             <MenuItem
                                 style={this.context.location.pathname === "/feedback"
                                 ? style.selectedMenu
                                 : {}}
                                 primaryText="Feedback"
                                 containerElement={< Link to = "/feedback" />}
-                                leftIcon={< ActionFeedback />}/>
+                                leftIcon={< ActionFeedback />}
+                                rightIcon={this.context.location.pathname === "/feedback" && this.props.countFeedback !== 0
+                                ? this.getNotificationIcon(this.props.countFeedback, true)
+                                : this.props.countFeedback !== 0 && this.getNotificationIcon(this.props.countFeedback, false)}/>
                             <MenuItem
                                 style={this.context.location.pathname === "/hobbies"
                                 ? style.selectedMenu
                                 : {}}
                                 primaryText="Hobbies"
                                 containerElement={< Link to = "/hobbies" />}
-                                leftIcon={< ActionHobbies />}/>
+                                leftIcon={< ActionHobbies />}
+                                rightIcon={this.context.location.pathname === "/hobbies" && this.props.countHobbies !== 0
+                                ? this.getNotificationIcon(this.props.countHobbies, true)
+                                : this.props.countHobbies !== 0 && this.getNotificationIcon(this.props.countHobbies, false)}/>
                             <div
                                 style={{
                                 position: 'fixed',

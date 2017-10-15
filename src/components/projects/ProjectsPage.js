@@ -47,7 +47,7 @@ class ProjectsPage extends React.Component {
 
     render() {
         return (
-            <div id={'paper2'}>
+            <div>
                 <div
                     style={{
                     display: 'flex',
@@ -99,7 +99,7 @@ ProjectsPage.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-    return {projects: state.projects};
+    return {projects: state.projects.values};
 }
 
 function mapDispatchToProps(dispatch) {

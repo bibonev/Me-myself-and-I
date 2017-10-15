@@ -182,7 +182,11 @@ class ExperiencePage extends React.Component {
                                                                             {point
                                                                                 .split(' ')
                                                                                 .map(p => {
-                                                                                    if (keyWords.includes(p.toLowerCase())) {
+                                                                                    let clearP = p;
+                                                                                    if (clearP.includes(',')) 
+                                                                                        clearP = clearP.replace(',', '');
+                                                                                    
+                                                                                    if (keyWords.includes(clearP.toLowerCase())) {
                                                                                         return (
                                                                                             <span>
                                                                                                 <span

@@ -10,19 +10,24 @@ export default function experienceReducers(state = initialState, action) {
     switch (action.type) {
         case types.SHOW_EDUCATION:
             return {
-                ...state, 
+                ...state,
                 education: [].concat(action.education)
             };
         case types.SHOW_COMERCIAL:
-            return { 
-                ...state, 
+            return {
+                ...state,
                 comercial: [].concat(action.comercial)
             };
         case types.SHOW_VOLUNTEERING:
             return {
-                ...state, 
+                ...state,
                 volunteering: [].concat(action.volunteering)
             };
+        case types.CHECK_EXPERIENCE:
+            return {
+                ...state,
+                count: action.countExperience
+            }
         default:
             return state;
     }

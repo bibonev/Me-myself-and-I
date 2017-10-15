@@ -25,7 +25,12 @@ import IconButton from 'material-ui/IconButton';
 
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+
 import * as searchActions from '../actions/searchActions';
+import * as projectsActions from '../actions/projectsActions';
+import * as hobbiesActions from '../actions/hobbiesActions';
+import * as feedbackActions from '../actions/feedbackActions';
+import * as experienceActions from '../actions/experienceActions';
 
 class App extends React.Component {
     constructor() {
@@ -39,15 +44,47 @@ class App extends React.Component {
             .bind(this);
     }
 
-    onSubmit(req) {
+    onSubmit(request) {
+        let req = request
+            .replace(/ /g, '')
+            .replace(/\d*[.]?\d*/g, '')
+            .toLowerCase()
+            .split(',');
+
         this
             .props
-            .actions
-            .addTechnologies(req.replace(/ /g, '').replace(/\d*[.]?\d*/g, '').toLowerCase().split(','));
+            .searchActions
+            .addTechnologies(req);
+
+        this
+            .props
+            .projectsActions
+            .checkProjects(req);
+
+        this
+            .props
+            .hobbiesActions
+            .checkHobbies(req);
+
+        this
+            .props
+            .feedbackActions
+            .checkFeedback(req);
+
+        this
+            .props
+            .experienceActions
+            .checkExperience(req);
+
         this.setState({open: false});
     }
 
     render() {
+        console.log("COUNT PROJECTS: ", this.props.countProjects);
+        console.log("COUNT EXPERIENCE: ", this.props.countExperience);
+        console.log("COUNT FEEDBACK: ", this.props.countFeedback);
+        console.log("COUNT HOBBIES: ", this.props.countHobbies);
+
         const style = {
             paper: {
                 margin: "0px 0px 0px 300px",
@@ -64,6 +101,7 @@ class App extends React.Component {
                 color: 'white'
             }
         };
+
         return (
             <MuiThemeProvider muiTheme={theme}>
                 {this.state.open && this.context.location.pathname === "/"
@@ -103,11 +141,11 @@ class App extends React.Component {
                                 <Avatar src={require("../../assets/profile_picture.png")} size={275}/>
                             </MenuItem>
                             <MenuItem
-                                style={this.context.location.pathname === "/home"
+                                style={this.context.location.pathname === "/about"
                                 ? style.selectedMenu
                                 : {}}
                                 primaryText="About"
-                                containerElement={< Link to = "/home" />}
+                                containerElement={< Link to = "/about" />}
                                 leftIcon={< ActionAbout />}/>
                             <Divider/>
                             <MenuItem
@@ -203,7 +241,15 @@ class App extends React.Component {
 
 App.propTypes = {
     children: PropTypes.object.isRequred,
-    actions: PropTypes.object.isRequired
+    searchActions: PropTypes.object.isRequired,
+    projectsActions: PropTypes.object.isRequired,
+    hobbiesActions: PropTypes.object.isRequired,
+    feedbackActions: PropTypes.object.isRequired,
+    experienceActions: PropTypes.object.isRequired,
+    countProjects: PropTypes.number.isRequired,
+    countHobbies: PropTypes.number.isRequired,
+    countFeedback: PropTypes.number.isRequired,
+    countExperience: PropTypes.number.isRequired
 };
 
 App.contextTypes = {
@@ -211,10 +257,18 @@ App.contextTypes = {
     location: React.PropTypes.object
 }
 
+function mapStateToProps(state, ownProps) {
+    return {countProjects: state.projects.count, countHobbies: state.hobbies.count, countFeedback: state.feedbacks.count, countExperience: state.experience.count};
+}
+
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(searchActions, dispatch)
+        searchActions: bindActionCreators(searchActions, dispatch),
+        projectsActions: bindActionCreators(projectsActions, dispatch),
+        hobbiesActions: bindActionCreators(hobbiesActions, dispatch),
+        feedbackActions: bindActionCreators(feedbackActions, dispatch),
+        experienceActions: bindActionCreators(experienceActions, dispatch)
     };
 }
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

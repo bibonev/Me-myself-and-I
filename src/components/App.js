@@ -41,7 +41,8 @@ class App extends React.Component {
 
         this.state = {
             open: true,
-            request: ''
+            request: '',
+            countAbout: undefined
         };
 
         this.onSubmit = this
@@ -83,11 +84,19 @@ class App extends React.Component {
             .experienceActions
             .checkExperience(req);
 
+        let countAbout = 0;
+        ['C#', 'C++', 'XNA', 'WPF'].forEach(function (t) {
+            if (req.includes(t.toLowerCase())) {
+                countAbout += 1;
+            }
+        }, this);
+
         this.setState({
             open: false,
             request: request === undefined
                 ? ''
-                : request
+                : request,
+            countAbout: countAbout
         });
     }
 
@@ -215,8 +224,10 @@ class App extends React.Component {
                                 : {}}
                                 primaryText="About"
                                 containerElement={< Link to = "/about" />}
-                                leftIcon={< ActionAbout />}/>
-                            <Divider/>
+                                leftIcon={< ActionAbout />}
+                                rightIcon={this.context.location.pathname === "/about" || this.context.location.pathname === '/'
+                                ? this.state.countAbout !== undefined && this.state.countAbout !== 0 && this.getNotificationIcon(this.state.countAbout, true)
+                                : this.state.countAbout !== undefined && this.state.countAbout !== 0 && this.getNotificationIcon(this.state.countAbout, false)}/>
                             <MenuItem
                                 style={this.context.location.pathname === "/projects"
                                 ? style.selectedMenu

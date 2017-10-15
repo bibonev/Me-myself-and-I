@@ -51,7 +51,7 @@ let comercial = [
                 "oining the Contact Group. I worked on the AdminTool, LookedAfterCall and CallPar" +
                 "ents products as part of a SCRUM team. My job included:",
         points: [
-            'creating pages using React and Redux, HTML and CSS', 'writing rest apis using C#, SQL and SQL Management Studio', 'writing unit tests for the rest apis and front-end Javascript tests using NSubst' +
+            'creating pages using React and Redux, HTML and CSS', 'writing rest apis using C#, SQL and SQL Management Studio', 'writing unit tests for the rest apis and front-end JavaScript tests using NSubst' +
                     'itute, Mock and Enzyme',
             'fixing bugs',
             'reviewing pull requests',
@@ -117,19 +117,64 @@ export function checkExperience(technologies) {
                 com
                     .points
                     .forEach(function (point) {
-                        if (point.replace(',', ' ').toLowerCase().includes(tech)) {
-                            count += 1;
+                        point
+                            .split(" ")
+                            .forEach(function (p) {
+                                if (p.replace(',', '').toLowerCase().includes(tech)) {
+                                    if (p.replace(',', '').toLowerCase() !== tech && p.replace(',', '').toLowerCase() === 'javascript') {
+                                        count += 0;
+                                    } else {
+                                        count += 1;
+                                    }
+                                }
+                            }, this);
+                    }, this);
+
+                com
+                    .textBefore
+                    .split(" ")
+                    .forEach(function (text) {
+                        if (text.replace(',', '').toLowerCase().includes(tech)) {
+                            if (text.replace(',', '').toLowerCase() !== tech && text.replace(',', '').toLowerCase() === 'javascript') {
+                                count += 0;
+                            } else {
+                                count += 1;
+                            }
                         }
                     }, this);
+
+                com
+                    .textAfter
+                    .split(" ")
+                    .forEach(function (text) {
+                        if (text.replace(',', '').toLowerCase().includes(tech)) {
+                            if (text.replace(',', '').toLowerCase() !== tech && text.replace(',', '').toLowerCase() === 'javascript') {
+                                count += 0;
+                            } else {
+                                count += 1;
+                            }
+                        }
+                    }, this);
+
             }, this);
     }, this);
 
     volunteering.forEach(function (vol) {
         technologies
             .forEach(function (tech) {
-                if (vol.textBefore.replace(',', ' ').toLowerCase().includes(tech)) {
-                    count += 1;
-                }
+                vol
+                    .textBefore
+                    .split(" ")
+                    .forEach(function (text) {
+                        if (text.replace(',', '').toLowerCase().includes(tech)) {
+                            if (text.replace(',', '').toLowerCase() !== tech && text.replace(',', '').toLowerCase() === 'javascript') {
+                                count += 0;
+                            } else {
+                                count += 1;
+                            }
+                        }
+                    }, this);
+
             }, this);
     }, this);
 

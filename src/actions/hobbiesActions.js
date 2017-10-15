@@ -71,9 +71,14 @@ export function checkHobbies(technologies) {
     hobbies.forEach(function (hobby) {
         technologies
             .forEach(function (tech) {
-                if (hobby.text.replace(',', ' ').toLowerCase().includes(tech)) {
-                    count += 1;
-                }
+                hobby
+                    .text
+                    .split(" ")
+                    .forEach(function (t) {
+                        if (t.replace(',', ' ').toLowerCase().includes(tech)) {
+                            count += 1;
+                        }
+                    }, this);
             }, this);
     }, this);
 

@@ -75,9 +75,20 @@ export function checkFeedback(technologies) {
     feedbacks.forEach(function (feedback) {
         technologies
             .forEach(function (tech) {
-                if (feedback.text.replace(',', ' ').toLowerCase().includes(tech)) {
-                    count += 1;
-                }
+                feedback
+                    .text
+                    .split(" ")
+                    .forEach(function (feedb) {
+                        if (feedb.replace(',', ' ').toLowerCase().includes(tech)) {
+                            console.log(feedb.replace(',', '').toLowerCase());
+                            console.log(tech);
+                            if (feedb.replace(',', '').toLowerCase() !== tech && feedb.replace(',', '').toLowerCase().includes('javascript')) {
+                                count += 0;
+                            } else {
+                                count += 1;
+                            }
+                        }
+                    }, this);
             }, this);
     }, this);
 

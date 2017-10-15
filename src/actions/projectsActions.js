@@ -168,8 +168,12 @@ export function checkProjects(technologies) {
                 project
                     .technologies
                     .forEach(function (ptech) {
-                        if (ptech.replace(' ', '').toLowerCase().includes(tech.replace(' ', ''))) {
-                            count += 1;
+                        if (ptech.replace(' ', '').toLowerCase().includes(tech)) {
+                            if (ptech.replace(',', '').toLowerCase() !== tech && ptech.replace(',', '').toLowerCase().includes('javascript')) {
+                                count += 0;
+                            } else {
+                                count += 1;
+                            }
                         }
                     }, this);
             }, this);

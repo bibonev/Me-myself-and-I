@@ -20,7 +20,8 @@ import ActionFeedback from 'material-ui/svg-icons/action/feedback';
 import ActionWork from 'material-ui/svg-icons/action/work';
 import ActionLanguages from 'material-ui/svg-icons/action/translate';
 import ActionHobbies from 'material-ui/svg-icons/action/favorite';
-import ActionAbout from 'material-ui/svg-icons/action/bookmark-border';
+import ActionAbout from 'material-ui/svg-icons/action/bookmark';
+import ClearSearch from 'material-ui/svg-icons/navigation/close';
 import IconButton from 'material-ui/IconButton';
 import Badge from 'material-ui/Badge';
 import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
@@ -40,23 +41,23 @@ class App extends React.Component {
 
         this.state = {
             open: true,
-            experience: false,
-            projects: false,
-            hobbies: false,
-            feedback: false
+            request: ''
         };
+
         this.onSubmit = this
             .onSubmit
             .bind(this);
     }
 
     onSubmit(request) {
-        let req = request
-            .replace(/ /g, '')
-            .replace(/\d*[.]?\d*/g, '')
-            .toLowerCase()
-            .split(',');
-
+        let req = [];
+        if (request !== '' && request !== undefined) {
+            req = request
+                .replace(/ /g, '')
+                .replace(/\d*[.]?\d*/g, '')
+                .toLowerCase()
+                .split(',');
+        }
         this
             .props
             .searchActions
@@ -82,7 +83,12 @@ class App extends React.Component {
             .experienceActions
             .checkExperience(req);
 
-        this.setState({open: false});
+        this.setState({
+            open: false,
+            request: request === undefined
+                ? ''
+                : request
+        });
     }
 
     getNotificationIcon(value, selected) {
@@ -139,7 +145,16 @@ class App extends React.Component {
             }
         };
 
-        console.log("PROJECTS: ", this.props.countProjects);
+        const dataSourceTechnologies = [
+            'Java',
+            'C#',
+            'React',
+            'Angular 2',
+            '.NET',
+            'ASP',
+            'Python',
+            'Docker'
+        ];
 
         return (
             <MuiThemeProvider muiTheme={theme}>
@@ -148,19 +163,19 @@ class App extends React.Component {
                             <Dialog
                                 title="What skills are you looking for from Boyan...?"
                                 modal={true}
-                                open={this.state.open}>
+                                open={this.state.open}
+                                actions={< IconButton tooltip = {
+                                'I want to see everything'
+                            }
+                            tooltipPosition = {
+                                'top-left'
+                            }
+                            onClick = {
+                                () => this.onSubmit('')
+                            } > < ClearSearch /> </IconButton >}>
                                 <AutoComplete
                                     hintText="(eg. Java, C#, React, JavaScript, .NET, ...)"
-                                    dataSource={[
-                                    'Java',
-                                    'C#',
-                                    'React',
-                                    'Angular 2',
-                                    '.NET',
-                                    'ASP',
-                                    'Python',
-                                    'Docker'
-                                ]}
+                                    dataSource={dataSourceTechnologies}
                                     floatingLabelText="Search"
                                     fullWidth={true}
                                     onNewRequest={(req) => this.onSubmit(req)}/>
@@ -178,6 +193,21 @@ class App extends React.Component {
                         }}>
                             <MenuItem disabled={true}>
                                 <Avatar src={require("../../assets/profile_picture.png")} size={275}/>
+                            </MenuItem>
+                            <MenuItem
+                                disabled={true}
+                                rightIcon={< IconButton onClick = {
+                                () => this.onSubmit('')
+                            }
+                            style = {{ position: 'absolute', top: 20, right: 20 }} > < ClearSearch /> </IconButton >}>
+                                <AutoComplete
+                                    hintText="(eg. Java, C#, ...)"
+                                    searchText={this.state.request}
+                                    onUpdateInput={(val) => this.onSubmit(val)}
+                                    dataSource={dataSourceTechnologies}
+                                    onNewRequest={(req) => this.onSubmit(req)}
+                                    floatingLabelText="Search"
+                                    fullWidth={true}/>
                             </MenuItem>
                             <MenuItem
                                 style={this.context.location.pathname === "/about" || this.context.location.pathname === "/"

@@ -11,6 +11,8 @@ import Avatar from 'material-ui/Avatar';
 import Divider from 'material-ui/Divider';
 import {Tabs, Tab} from 'material-ui/Tabs';
 
+import Highlighter from 'react-highlight-words';
+
 class ExperiencePage extends React.Component {
 
     constructor() {
@@ -48,6 +50,17 @@ class ExperiencePage extends React.Component {
     render() {
         const {stepIndexEducation, stepIndexComercial, stepIndexVolunteering, value} = this.state;
 
+        const style = {
+            unhighlightStyle: {
+                color: '#535A5A',
+                fontFamily: 'Open Sans, sans-serif',
+                fontSize: '15px',
+                fontWeight: '400',
+                lineHeight: '24px',
+                margin: '0 0 14px',
+                textAlign: 'justify'
+            }
+        }
         return (
             <div>
                 <Tabs
@@ -159,59 +172,28 @@ class ExperiencePage extends React.Component {
                                                     </div>
                                                     <Divider/>
                                                     <br/>
-                                                    <p>
-                                                        {stage.textBefore}
-                                                    </p>
+                                                    <Highlighter
+                                                        unhighlightStyle={style.unhighlightStyle}
+                                                        searchWords={this.props.technologies}
+                                                        textToHighlight={stage.textBefore}/>
                                                     <ul>
                                                         {stage
                                                             .points
                                                             .map(point => {
-                                                                let pointAsArray = point
-                                                                    .toLowerCase()
-                                                                    .split(' ');
-                                                                let keyWords = [];
-                                                                pointAsArray.forEach(function (element) {
-                                                                    if (this.props.technologies.includes(element)) {
-                                                                        keyWords.push(element);
-                                                                    }
-                                                                }, this);
-
                                                                 return (
                                                                     <li>
-                                                                        <p>
-                                                                            {point
-                                                                                .split(' ')
-                                                                                .map(p => {
-                                                                                    let clearP = p;
-                                                                                    if (clearP.includes(',')) 
-                                                                                        clearP = clearP.replace(',', '');
-                                                                                    
-                                                                                    if (keyWords.includes(clearP.toLowerCase())) {
-                                                                                        return (
-                                                                                            <span>
-                                                                                                <span
-                                                                                                    style={{
-                                                                                                    background: '#1F57A4',
-                                                                                                    borderRadius: '18px',
-                                                                                                    color: 'white'
-                                                                                                }}>{p}</span>
-                                                                                                <span>&nbsp;</span>
-                                                                                            </span>
-                                                                                        );
-                                                                                    } else {
-                                                                                        return (
-                                                                                            <span>{p}&nbsp;</span>
-                                                                                        );
-                                                                                    }
-                                                                                })}
-                                                                        </p>
+                                                                        <Highlighter
+                                                                            unhighlightStyle={style.unhighlightStyle}
+                                                                            searchWords={this.props.technologies}
+                                                                            textToHighlight={point}/>
                                                                     </li>
                                                                 );
                                                             })}
                                                     </ul>
-                                                    {stage.textAfter !== '' && (
-                                                        <p>{stage.textAfter}</p>
-                                                    )}
+                                                    {stage.textAfter !== '' && (<Highlighter
+                                                        unhighlightStyle={style.unhighlightStyle}
+                                                        searchWords={this.props.technologies}
+                                                        textToHighlight={stage.textAfter}/>)}
                                                     <Divider/>
                                                 </StepContent>
                                             </Step>
@@ -264,19 +246,21 @@ class ExperiencePage extends React.Component {
                                                     </div>
                                                     <Divider/>
                                                     <br/>
-                                                    <p>
-                                                        {stage.textBefore}
-                                                    </p>
-                                                    {stage
+                                                    <Highlighter
+                                                        unhighlightStyle={style.unhighlightStyle}
+                                                        searchWords={this.props.technologies}
+                                                        textToHighlight={stage.textBefore}/> {stage
                                                         .points
                                                         .map(point => {
-                                                            return (
-                                                                <p>{point}</p>
-                                                            );
+                                                            return (<Highlighter
+                                                                unhighlightStyle={style.unhighlightStyle}
+                                                                searchWords={this.props.technologies}
+                                                                textToHighlight={point}/>);
                                                         })}
-                                                    {stage.textAfter !== '' && (
-                                                        <p>{stage.textAfter}</p>
-                                                    )}
+                                                    {stage.textAfter !== '' && (<Highlighter
+                                                        unhighlightStyle={style.unhighlightStyle}
+                                                        searchWords={this.props.technologies}
+                                                        textToHighlight={stage.textAfter}/>)}
                                                     <Divider/>
                                                 </StepContent>
                                             </Step>

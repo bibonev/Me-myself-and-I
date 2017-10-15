@@ -7,6 +7,7 @@ import IconButton from 'material-ui/IconButton';
 import Avatar from 'material-ui/Avatar';
 import {blue300} from 'material-ui/styles/colors';
 import {connect} from 'react-redux';
+import Highlighter from 'react-highlight-words';
 
 class GridCard extends React.Component {
     constructor() {
@@ -60,32 +61,25 @@ class GridCard extends React.Component {
                             .map(chip => {
                                 return (
                                     <div>
-                                        {this
-                                            .props
-                                            .technologies
-                                            .includes(chip.toLowerCase())
-                                            ? <Chip
-                                                    style={{
-                                                    margin: "20px 0px 0px 5px"
-                                                }}
-                                                    backgroundColor={"#1F57A4"}
-                                                    labelColor={"white"}>
-                                                    {chip}
-                                                </Chip>
-                                            : <Chip
-                                                style={{
-                                                margin: "20px 0px 0px 5px"
-                                            }}
-                                                backgroundColor={"#1D364D"}
-                                                labelColor={"white"}>
-                                                {chip}
-                                            </Chip>}
+                                        <Chip
+                                            style={{
+                                            margin: "20px 0px 0px 5px"
+                                        }}
+                                            backgroundColor={"#1D364D"}
+                                            labelColor={"white"}>
+                                            <Highlighter searchWords={this.props.technologies} textToHighlight={chip}/>
+                                        </Chip>
+
                                     </div>
                                 );
                             })}
                     </div>
                     <br/> {(this.props.blockquote && this.props.blockquote === true)
-                        ? <blockquote>{this.props.text}</blockquote>
+                        ? <blockquote>
+                                <Highlighter
+                                    searchWords={this.props.technologies}
+                                    textToHighlight={this.props.text}/>
+                            </blockquote>
                         : <p
                             style={{
                             textAlign: 'justify',

@@ -194,9 +194,9 @@ class App extends React.Component {
                                 primaryText="Projects"
                                 containerElement={< Link to = "/projects" />}
                                 leftIcon={< ActionCode />}
-                                rightIcon={this.context.location.pathname === "/projects" && this.props.countProjects !== 0
-                                ? this.getNotificationIcon(this.props.countProjects, true)
-                                : this.props.countProjects !== 0 && this.getNotificationIcon(this.props.countProjects, false)}/>
+                                rightIcon={this.context.location.pathname === "/projects"
+                                ? this.props.countProjects !== undefined && this.props.countProjects !== 0 && this.getNotificationIcon(this.props.countProjects, true)
+                                : this.props.countProjects !== undefined && this.props.countProjects !== 0 && this.getNotificationIcon(this.props.countProjects, false)}/>
                             <MenuItem
                                 style={this.context.location.pathname === "/experience"
                                 ? style.selectedMenu
@@ -205,8 +205,8 @@ class App extends React.Component {
                                 containerElement={< Link to = "/experience" />}
                                 leftIcon={< ActionWork />}
                                 rightIcon={this.context.location.pathname === "/experience" && this.props.countExperience !== 0
-                                ? this.getNotificationIcon(this.props.countExperience, true)
-                                : this.props.countExperience !== 0 && this.getNotificationIcon(this.props.countExperience, false)}/>
+                                ? this.props.countExperience !== undefined && this.getNotificationIcon(this.props.countExperience, true)
+                                : this.props.countExperience !== undefined && this.props.countExperience !== 0 && this.getNotificationIcon(this.props.countExperience, false)}/>
                             <MenuItem
                                 style={this.context.location.pathname === "/feedback"
                                 ? style.selectedMenu
@@ -215,8 +215,8 @@ class App extends React.Component {
                                 containerElement={< Link to = "/feedback" />}
                                 leftIcon={< ActionFeedback />}
                                 rightIcon={this.context.location.pathname === "/feedback" && this.props.countFeedback !== 0
-                                ? this.getNotificationIcon(this.props.countFeedback, true)
-                                : this.props.countFeedback !== 0 && this.getNotificationIcon(this.props.countFeedback, false)}/>
+                                ? this.props.countFeedback !== undefined && this.getNotificationIcon(this.props.countFeedback, true)
+                                : this.props.countFeedback !== undefined && this.props.countFeedback !== 0 && this.getNotificationIcon(this.props.countFeedback, false)}/>
                             <MenuItem
                                 style={this.context.location.pathname === "/hobbies"
                                 ? style.selectedMenu
@@ -225,8 +225,8 @@ class App extends React.Component {
                                 containerElement={< Link to = "/hobbies" />}
                                 leftIcon={< ActionHobbies />}
                                 rightIcon={this.context.location.pathname === "/hobbies" && this.props.countHobbies !== 0
-                                ? this.getNotificationIcon(this.props.countHobbies, true)
-                                : this.props.countHobbies !== 0 && this.getNotificationIcon(this.props.countHobbies, false)}/>
+                                ? this.props.countHobbies !== undefined && this.getNotificationIcon(this.props.countHobbies, true)
+                                : this.props.countHobbies !== undefined && this.props.countHobbies !== 0 && this.getNotificationIcon(this.props.countHobbies, false)}/>
                             <div
                                 style={{
                                 position: 'fixed',

@@ -80,8 +80,6 @@ export function checkFeedback(technologies) {
                     .split(" ")
                     .forEach(function (feedb) {
                         if (feedb.replace(',', ' ').toLowerCase().includes(tech)) {
-                            console.log(feedb.replace(',', '').toLowerCase());
-                            console.log(tech);
                             if (feedb.replace(',', '').toLowerCase() !== tech && feedb.replace(',', '').toLowerCase().includes('javascript')) {
                                 count += 0;
                             } else {

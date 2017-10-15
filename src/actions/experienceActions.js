@@ -30,20 +30,6 @@ let education = [
 
 let comercial = [
     {
-        name: 'Assistant at Laboratory of Robotics, Mechanics and Telemechanics',
-        image: 'plovdiv_university.jpg',
-        durationPlace: 'Plovdiv University • (May 2012 - May 2015) - 3 yrs • Plovdiv, Bulgaria',
-        textBefore: "Being an assistant in the laboratory gave me a lot of experience in researching," +
-                " developing and debugging. I learned a lot about graphics, in particular OpenGL " +
-                "and DirectX (XNA). Also, I have implemented many algorithms in the area of 2D/3D" +
-                " image processing and point cloud handling using C/C++. Moreover, I used Kinect " +
-                "and other sensors, such as Arduino and MPU6050 in order to scan environments and" +
-                " process the gathered data. During my time in the laboratory I have developed tw" +
-                "o projects in this field in collaboration with the head assistant professor, PhD" +
-                " A. Penev.",
-        points: [],
-        textAfter: ''
-    }, {
         name: 'Software Developer',
         image: 'contact_group.jpeg',
         durationPlace: 'Contact Group • (Jun 2016 - Mar 2017) - 11 mos • Birmingham, United Kingdom',
@@ -85,12 +71,26 @@ let comercial = [
 
 let volunteering = [
     {
+        name: 'Assistant at Laboratory of Robotics, Mechanics and Telemechanics',
+        image: 'plovdiv_university.jpg',
+        durationPlace: 'Plovdiv University • (May 2012 - May 2015) - 3 yrs • Plovdiv, Bulgaria',
+        textBefore: "Being an assistant in the laboratory gave me a lot of experience in researching," +
+                " developing and debugging. I learned a lot about graphics, in particular OpenGL " +
+                "and DirectX (XNA). Also, I have implemented many algorithms in the area of 2D/3D" +
+                " image processing and point cloud handling using C/C++. Moreover, I used Kinect " +
+                "and other sensors, such as Arduino and MPU6050 in order to scan environments and" +
+                " process the gathered data. During my time in the laboratory I have developed tw" +
+                "o projects in this field in collaboration with the head assistant professor, PhD" +
+                " A. Penev.",
+        points: [],
+        textAfter: ''
+    }, {
         name: 'Teaching lower grade students programming',
         image: 'omg_plovdiv.jpg',
         durationPlace: '(Oct 2011 – Apr 2015) - 3 yrs 7 mos • Math High School "Acad. Kiril Popov"',
         textBefore: "Me and two of my classmates were teaching lower grade students programming - C#," +
-            " Java and C++. Most of the students attended national competitions and received " +
-            "recognition for their work.",
+                " Java and C++. Most of the students attended national competitions and received " +
+                "recognition for their work.",
         points: [],
         textAfter: ''
     }

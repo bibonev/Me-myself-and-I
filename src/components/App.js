@@ -229,16 +229,6 @@ class App extends React.Component {
                                 ? this.state.countAbout !== undefined && this.state.countAbout !== 0 && this.getNotificationIcon(this.state.countAbout, true)
                                 : this.state.countAbout !== undefined && this.state.countAbout !== 0 && this.getNotificationIcon(this.state.countAbout, false)}/>
                             <MenuItem
-                                style={this.context.location.pathname === "/projects"
-                                ? style.selectedMenu
-                                : {}}
-                                primaryText="Projects"
-                                containerElement={< Link to = "/projects" />}
-                                leftIcon={< ActionCode />}
-                                rightIcon={this.context.location.pathname === "/projects"
-                                ? this.props.countProjects !== undefined && this.props.countProjects !== 0 && this.getNotificationIcon(this.props.countProjects, true)
-                                : this.props.countProjects !== undefined && this.props.countProjects !== 0 && this.getNotificationIcon(this.props.countProjects, false)}/>
-                            <MenuItem
                                 style={this.context.location.pathname === "/experience"
                                 ? style.selectedMenu
                                 : {}}
@@ -258,6 +248,16 @@ class App extends React.Component {
                                 rightIcon={this.context.location.pathname === "/feedback" && this.props.countFeedback !== 0
                                 ? this.props.countFeedback !== undefined && this.getNotificationIcon(this.props.countFeedback, true)
                                 : this.props.countFeedback !== undefined && this.props.countFeedback !== 0 && this.getNotificationIcon(this.props.countFeedback, false)}/>
+                            <MenuItem
+                                style={this.context.location.pathname === "/projects"
+                                ? style.selectedMenu
+                                : {}}
+                                primaryText="Projects"
+                                containerElement={< Link to = "/projects" />}
+                                leftIcon={< ActionCode />}
+                                rightIcon={this.context.location.pathname === "/projects"
+                                ? this.props.countProjects !== undefined && this.props.countProjects !== 0 && this.getNotificationIcon(this.props.countProjects, true)
+                                : this.props.countProjects !== undefined && this.props.countProjects !== 0 && this.getNotificationIcon(this.props.countProjects, false)}/>
                             <MenuItem
                                 style={this.context.location.pathname === "/hobbies"
                                 ? style.selectedMenu

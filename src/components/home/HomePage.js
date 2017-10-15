@@ -1,5 +1,8 @@
 import React from 'react';
 import Divider from 'material-ui/Divider';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import Highlighter from 'react-highlight-words';
 
 class HomePage extends React.Component {
     constructor() {
@@ -17,26 +20,33 @@ class HomePage extends React.Component {
                 <Divider/>
                 <br/>
                 <div>
-                    <p>I was 12 years old when I started studying PowerPoint at school. My
-                        schoolmates were really impressed by the images and anumations, but not me. I
-                        was interestesd in the macros I could create with some VB skills, those macros
-                        that were actually creating the images and animations. I started coding in Flash
-                        when I was 14 years old. Then, I created my first project, consisted of
-                        interactive tests and games, with which I have won the national olympiad of
-                        Information Technology in Bulgaria. I took part in the conference of&nbsp;
+                    <p>
+                        I was 12 years old when I started studying PowerPoint at school. My schoolmates
+                        were really impressed by the images and anumations, but not me. I was
+                        interestesd in the macros I could create with some VB skills, those macros that
+                        were actually creating the images and animations. I started coding in Flash when
+                        I was 14 years old. Then, I created my first project, consisted of interactive
+                        tests and games, with which I have won the national olympiad of Information
+                        Technology in Bulgaria. I took part in the conference of&nbsp;
                         <q>The Union of Mathematicians in Bulagira</q>. I was the youngest participent
                         there and as a result of my performace, I was invited to take part in a summer
                         educational camp, having the chance to learn the most recent technologies at
                         that time.
                     </p>
                     <p>
-                        The same year I was accepted in the System Programming class of&nbsp;
-                        <q>High School of Mathematics Acad. Kiril Popov, Plovdiv</q>. The motivational
-                        environment made me learn lots of new programming languges and technologies like
-                        C#, WPF, XNA, C++, etc. Eventually, I made it to the labaratory of Robotics,
-                        Mechanics and Telemechanics in the local university. I met Professor, PhD.
-                        Alexander Penev who became my mentor and we started developing new projects with
-                        which I won many national and international competitions.
+                        <span>
+                            The same year I was accepted in the System Programming class of&nbsp;
+                            <q>High School of Mathematics Acad. Kiril Popov, Plovdiv</q>. The motivational
+                            environment made me learn lots of new programming languges and technologies like</span>
+                        <Highlighter
+                            searchWords={this.props.technologies}
+                            textToHighlight={" C#, WPF, XNA, C++"}/>
+                        <span>
+                            , etc. Eventually, I made it to the labaratory of Robotics, Mechanics and
+                            Telemechanics in the local university. I met Professor, PhD. Alexander Penev who
+                            became my mentor and we started developing new projects with which I won many
+                            national and international competitions.
+                        </span>
                     </p>
                 </div>
                 <br/>
@@ -100,4 +110,12 @@ class HomePage extends React.Component {
     }
 }
 
-export default HomePage;
+HomePage.propTypes = {
+    technologies: PropTypes.array.isRequired
+};
+
+function mapStateToProps(state, ownProps) {
+    return {technologies: state.search};
+}
+
+export default connect(mapStateToProps)(HomePage);

@@ -11,6 +11,8 @@ import Avatar from 'material-ui/Avatar';
 import Divider from 'material-ui/Divider';
 import {Tabs, Tab} from 'material-ui/Tabs';
 
+import Highlighter from 'react-highlight-words';
+
 class ExperiencePage extends React.Component {
 
     constructor() {
@@ -19,7 +21,7 @@ class ExperiencePage extends React.Component {
             stepIndexEducation: 0,
             stepIndexComercial: 0,
             stepIndexVolunteering: 0,
-            value: 'education'
+            value: 'comercial'
         };
         this.handleChange = this
             .handleChange
@@ -48,6 +50,17 @@ class ExperiencePage extends React.Component {
     render() {
         const {stepIndexEducation, stepIndexComercial, stepIndexVolunteering, value} = this.state;
 
+        const style = {
+            unhighlightStyle: {
+                color: '#535A5A',
+                fontFamily: 'Open Sans, sans-serif',
+                fontSize: '15px',
+                fontWeight: '400',
+                lineHeight: '24px',
+                margin: '0 0 14px',
+                textAlign: 'justify'
+            }
+        }
         return (
             <div>
                 <Tabs
@@ -118,7 +131,7 @@ class ExperiencePage extends React.Component {
                             </Stepper>
                         </div>
                     </Tab>
-                    <Tab label="Comercial" value="comercial">
+                    <Tab label="Work" value="comercial">
                         <div
                             style={{
                             maxWidth: 980,
@@ -159,21 +172,28 @@ class ExperiencePage extends React.Component {
                                                     </div>
                                                     <Divider/>
                                                     <br/>
-                                                    <p>
-                                                        {stage.textBefore}
-                                                    </p>
+                                                    <Highlighter
+                                                        unhighlightStyle={style.unhighlightStyle}
+                                                        searchWords={this.props.technologies}
+                                                        textToHighlight={stage.textBefore}/>
                                                     <ul>
                                                         {stage
                                                             .points
                                                             .map(point => {
                                                                 return (
-                                                                    <li>{point}</li>
+                                                                    <li>
+                                                                        <Highlighter
+                                                                            unhighlightStyle={style.unhighlightStyle}
+                                                                            searchWords={this.props.technologies}
+                                                                            textToHighlight={point}/>
+                                                                    </li>
                                                                 );
                                                             })}
                                                     </ul>
-                                                    {stage.textAfter !== '' && (
-                                                        <p>{stage.textAfter}</p>
-                                                    )}
+                                                    {stage.textAfter !== '' && (<Highlighter
+                                                        unhighlightStyle={style.unhighlightStyle}
+                                                        searchWords={this.props.technologies}
+                                                        textToHighlight={stage.textAfter}/>)}
                                                     <Divider/>
                                                 </StepContent>
                                             </Step>
@@ -226,19 +246,21 @@ class ExperiencePage extends React.Component {
                                                     </div>
                                                     <Divider/>
                                                     <br/>
-                                                    <p>
-                                                        {stage.textBefore}
-                                                    </p>
-                                                    {stage
+                                                    <Highlighter
+                                                        unhighlightStyle={style.unhighlightStyle}
+                                                        searchWords={this.props.technologies}
+                                                        textToHighlight={stage.textBefore}/> {stage
                                                         .points
                                                         .map(point => {
-                                                            return (
-                                                                <p>{point}</p>
-                                                            );
+                                                            return (<Highlighter
+                                                                unhighlightStyle={style.unhighlightStyle}
+                                                                searchWords={this.props.technologies}
+                                                                textToHighlight={point}/>);
                                                         })}
-                                                    {stage.textAfter !== '' && (
-                                                        <p>{stage.textAfter}</p>
-                                                    )}
+                                                    {stage.textAfter !== '' && (<Highlighter
+                                                        unhighlightStyle={style.unhighlightStyle}
+                                                        searchWords={this.props.technologies}
+                                                        textToHighlight={stage.textAfter}/>)}
                                                     <Divider/>
                                                 </StepContent>
                                             </Step>
@@ -255,11 +277,12 @@ class ExperiencePage extends React.Component {
 
 ExperiencePage.propTypes = {
     actions: PropTypes.object.isRequired,
-    experience: PropTypes.object.isRequired
+    experience: PropTypes.object.isRequired,
+    technologies: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
-    return {experience: state.experience};
+    return {experience: state.experience, technologies: state.search};
 }
 
 function mapDispatchToProps(dispatch) {

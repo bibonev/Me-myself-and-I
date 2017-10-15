@@ -1,10 +1,13 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 import Chip from 'material-ui/Chip';
 import IconButton from 'material-ui/IconButton';
 import Avatar from 'material-ui/Avatar';
 import {blue300} from 'material-ui/styles/colors';
+import {connect} from 'react-redux';
+import Highlighter from 'react-highlight-words';
 
 class GridCard extends React.Component {
     constructor() {
@@ -57,19 +60,26 @@ class GridCard extends React.Component {
                             .chips
                             .map(chip => {
                                 return (
-                                    <Chip
-                                        style={{
-                                        margin: "20px 0px 0px 5px"
-                                    }}
-                                        backgroundColor={"#1D364D"}
-                                        labelColor={"white"}>
-                                        {chip}
-                                    </Chip>
+                                    <div>
+                                        <Chip
+                                            style={{
+                                            margin: "20px 0px 0px 5px"
+                                        }}
+                                            backgroundColor={"#1D364D"}
+                                            labelColor={"white"}>
+                                            <Highlighter searchWords={this.props.technologies} textToHighlight={chip}/>
+                                        </Chip>
+
+                                    </div>
                                 );
                             })}
                     </div>
                     <br/> {(this.props.blockquote && this.props.blockquote === true)
-                        ? <blockquote>{this.props.text}</blockquote>
+                        ? <blockquote>
+                                <Highlighter
+                                    searchWords={this.props.technologies}
+                                    textToHighlight={this.props.text}/>
+                            </blockquote>
                         : <p
                             style={{
                             textAlign: 'justify',
@@ -108,6 +118,7 @@ class GridCard extends React.Component {
 GridCard.propTypes = {
     title: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
+    technologies: PropTypes.array.isRequired,
     job: PropTypes.string,
     height: PropTypes.string,
     avatar: PropTypes.string,
@@ -120,4 +131,8 @@ GridCard.propTypes = {
     blockquote: PropTypes.bool
 };
 
-export default GridCard;
+function mapStateToProps(state, ownProps) {
+    return {technologies: state.search};
+}
+
+export default connect(mapStateToProps)(GridCard);

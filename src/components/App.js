@@ -20,23 +20,120 @@ import ActionFeedback from 'material-ui/svg-icons/action/feedback';
 import ActionWork from 'material-ui/svg-icons/action/work';
 import ActionLanguages from 'material-ui/svg-icons/action/translate';
 import ActionHobbies from 'material-ui/svg-icons/action/favorite';
-import ActionAbout from 'material-ui/svg-icons/action/bookmark-border';
+import ActionAbout from 'material-ui/svg-icons/action/bookmark';
+import ClearSearch from 'material-ui/svg-icons/navigation/close';
 import IconButton from 'material-ui/IconButton';
+import Badge from 'material-ui/Badge';
+import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
+
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+
+import * as searchActions from '../actions/searchActions';
+import * as projectsActions from '../actions/projectsActions';
+import * as hobbiesActions from '../actions/hobbiesActions';
+import * as feedbackActions from '../actions/feedbackActions';
+import * as experienceActions from '../actions/experienceActions';
 
 class App extends React.Component {
     constructor() {
         super();
 
         this.state = {
-            open: true
+            open: true,
+            request: '',
+            countAbout: undefined
         };
+
         this.onSubmit = this
             .onSubmit
             .bind(this);
     }
 
-    onSubmit() {
-        this.setState({open: false});
+    onSubmit(request) {
+        let req = [];
+        if (request !== '' && request !== undefined) {
+            req = request
+                .replace(/ /g, '')
+                .replace(/\d*[.]?\d*/g, '')
+                .toLowerCase()
+                .split(',');
+        }
+        this
+            .props
+            .searchActions
+            .addTechnologies(req);
+
+        this
+            .props
+            .projectsActions
+            .checkProjects(req);
+
+        this
+            .props
+            .hobbiesActions
+            .checkHobbies(req);
+
+        this
+            .props
+            .feedbackActions
+            .checkFeedback(req);
+
+        this
+            .props
+            .experienceActions
+            .checkExperience(req);
+
+        let countAbout = 0;
+        ['C#', 'C++', 'XNA', 'WPF'].forEach(function (t) {
+            if (req.includes(t.toLowerCase())) {
+                countAbout += 1;
+            }
+        }, this);
+
+        this.setState({
+            open: false,
+            request: request === undefined
+                ? ''
+                : request,
+            countAbout: countAbout
+        });
+    }
+
+    getNotificationIcon(value, selected) {
+        let badgeColor = selected
+            ? '#DFE6EB'
+            : '#1D364D';
+        let notificationColor = selected
+            ? 'white'
+            : 'black';
+        let textColor = selected
+            ? 'black'
+            : 'white';
+
+        console.log("VALUE: ", value);
+
+        return (
+            <Badge
+                badgeContent={value}
+                badgeStyle={{
+                top: 12,
+                right: 12,
+                backgroundColor: badgeColor,
+                color: textColor
+            }}
+                style={{
+                position: 'absolute',
+                top: -30,
+                right: 5
+            }}
+                primary={true}>
+                <NotificationsIcon
+                    style={{
+                    color: notificationColor
+                }}/>
+            </Badge>
+        );
     }
 
     render() {
@@ -52,9 +149,22 @@ class App extends React.Component {
                 backgroundColor: 'white'
             },
             selectedMenu: {
-                backgroundColor: "white"
+                backgroundColor: "#1D364D",
+                color: 'white'
             }
         };
+
+        const dataSourceTechnologies = [
+            'Java',
+            'C#',
+            'React',
+            'Angular 2',
+            '.NET',
+            'ASP',
+            'Python',
+            'Docker'
+        ];
+
         return (
             <MuiThemeProvider muiTheme={theme}>
                 {this.state.open && this.context.location.pathname === "/"
@@ -62,24 +172,22 @@ class App extends React.Component {
                             <Dialog
                                 title="What skills are you looking for from Boyan...?"
                                 modal={true}
-                                open={this.state.open}>
+                                open={this.state.open}
+                                actions={< IconButton tooltip = {
+                                'I want to see everything'
+                            }
+                            tooltipPosition = {
+                                'top-left'
+                            }
+                            onClick = {
+                                () => this.onSubmit('')
+                            } > < ClearSearch /> </IconButton >}>
                                 <AutoComplete
                                     hintText="(eg. Java, C#, React, JavaScript, .NET, ...)"
-                                    dataSource={[
-                                    'Java',
-                                    'C#',
-                                    'React',
-                                    'Angular 2',
-                                    '.NET',
-                                    'ASP',
-                                    'Python'
-                                ]}
+                                    dataSource={dataSourceTechnologies}
                                     floatingLabelText="Search"
                                     fullWidth={true}
-                                    onNewRequest={this.onSubmit}
-                                    errorStyle={{
-                                    color: "#1D364D"
-                                }}/>
+                                    onNewRequest={(req) => this.onSubmit(req)}/>
                             </Dialog>
                         </div>
                     : <div>
@@ -96,41 +204,70 @@ class App extends React.Component {
                                 <Avatar src={require("../../assets/profile_picture.png")} size={275}/>
                             </MenuItem>
                             <MenuItem
-                                style={this.context.location.pathname === "/"
+                                disabled={true}
+                                rightIcon={< IconButton onClick = {
+                                () => this.onSubmit('')
+                            }
+                            style = {{ position: 'absolute', top: 20, right: 20 }} > < ClearSearch /> </IconButton >}>
+                                <AutoComplete
+                                    hintText="(eg. Java, C#, ...)"
+                                    searchText={this.state.request}
+                                    onUpdateInput={(val) => this.onSubmit(val)}
+                                    dataSource={dataSourceTechnologies}
+                                    onNewRequest={(req) => this.onSubmit(req)}
+                                    floatingLabelText="Search"
+                                    fullWidth={true}/>
+                            </MenuItem>
+                            <MenuItem
+                                style={this.context.location.pathname === "/about" || this.context.location.pathname === "/"
                                 ? style.selectedMenu
                                 : {}}
                                 primaryText="About"
-                                containerElement={< Link to = "/" />}
-                                leftIcon={< ActionAbout />}/>
-                            <Divider/>
-                            <MenuItem
-                                style={this.context.location.pathname === "/projects"
-                                ? style.selectedMenu
-                                : {}}
-                                primaryText="Projects"
-                                containerElement={< Link to = "/projects" />}
-                                leftIcon={< ActionCode />}/>
+                                containerElement={< Link to = "/about" />}
+                                leftIcon={< ActionAbout />}
+                                rightIcon={this.context.location.pathname === "/about" || this.context.location.pathname === '/'
+                                ? this.state.countAbout !== undefined && this.state.countAbout !== 0 && this.getNotificationIcon(this.state.countAbout, true)
+                                : this.state.countAbout !== undefined && this.state.countAbout !== 0 && this.getNotificationIcon(this.state.countAbout, false)}/>
                             <MenuItem
                                 style={this.context.location.pathname === "/experience"
                                 ? style.selectedMenu
                                 : {}}
                                 primaryText="Experience"
                                 containerElement={< Link to = "/experience" />}
-                                leftIcon={< ActionWork />}/>
+                                leftIcon={< ActionWork />}
+                                rightIcon={this.context.location.pathname === "/experience" && this.props.countExperience !== 0
+                                ? this.props.countExperience !== undefined && this.getNotificationIcon(this.props.countExperience, true)
+                                : this.props.countExperience !== undefined && this.props.countExperience !== 0 && this.getNotificationIcon(this.props.countExperience, false)}/>
                             <MenuItem
                                 style={this.context.location.pathname === "/feedback"
                                 ? style.selectedMenu
                                 : {}}
                                 primaryText="Feedback"
                                 containerElement={< Link to = "/feedback" />}
-                                leftIcon={< ActionFeedback />}/>
+                                leftIcon={< ActionFeedback />}
+                                rightIcon={this.context.location.pathname === "/feedback" && this.props.countFeedback !== 0
+                                ? this.props.countFeedback !== undefined && this.getNotificationIcon(this.props.countFeedback, true)
+                                : this.props.countFeedback !== undefined && this.props.countFeedback !== 0 && this.getNotificationIcon(this.props.countFeedback, false)}/>
+                            <MenuItem
+                                style={this.context.location.pathname === "/projects"
+                                ? style.selectedMenu
+                                : {}}
+                                primaryText="Projects"
+                                containerElement={< Link to = "/projects" />}
+                                leftIcon={< ActionCode />}
+                                rightIcon={this.context.location.pathname === "/projects"
+                                ? this.props.countProjects !== undefined && this.props.countProjects !== 0 && this.getNotificationIcon(this.props.countProjects, true)
+                                : this.props.countProjects !== undefined && this.props.countProjects !== 0 && this.getNotificationIcon(this.props.countProjects, false)}/>
                             <MenuItem
                                 style={this.context.location.pathname === "/hobbies"
                                 ? style.selectedMenu
                                 : {}}
                                 primaryText="Hobbies"
                                 containerElement={< Link to = "/hobbies" />}
-                                leftIcon={< ActionHobbies />}/>
+                                leftIcon={< ActionHobbies />}
+                                rightIcon={this.context.location.pathname === "/hobbies" && this.props.countHobbies !== 0
+                                ? this.props.countHobbies !== undefined && this.getNotificationIcon(this.props.countHobbies, true)
+                                : this.props.countHobbies !== undefined && this.props.countHobbies !== 0 && this.getNotificationIcon(this.props.countHobbies, false)}/>
                             <div
                                 style={{
                                 position: 'fixed',
@@ -195,7 +332,16 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-    children: PropTypes.object.isRequred
+    children: PropTypes.object.isRequred,
+    searchActions: PropTypes.object.isRequired,
+    projectsActions: PropTypes.object.isRequired,
+    hobbiesActions: PropTypes.object.isRequired,
+    feedbackActions: PropTypes.object.isRequired,
+    experienceActions: PropTypes.object.isRequired,
+    countProjects: PropTypes.number.isRequired,
+    countHobbies: PropTypes.number.isRequired,
+    countFeedback: PropTypes.number.isRequired,
+    countExperience: PropTypes.number.isRequired
 };
 
 App.contextTypes = {
@@ -203,4 +349,18 @@ App.contextTypes = {
     location: React.PropTypes.object
 }
 
-export default App;
+function mapStateToProps(state, ownProps) {
+    return {countProjects: state.projects.count, countHobbies: state.hobbies.count, countFeedback: state.feedbacks.count, countExperience: state.experience.count};
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        searchActions: bindActionCreators(searchActions, dispatch),
+        projectsActions: bindActionCreators(projectsActions, dispatch),
+        hobbiesActions: bindActionCreators(hobbiesActions, dispatch),
+        feedbackActions: bindActionCreators(feedbackActions, dispatch),
+        experienceActions: bindActionCreators(experienceActions, dispatch)
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

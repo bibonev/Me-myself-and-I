@@ -13,6 +13,8 @@ import {
     CardText
 } from 'material-ui/Card';
 
+import Highlighter from 'react-highlight-words';
+
 import Pagination from 'material-ui-pagination';
 
 class HobbiesPage extends React.Component {
@@ -70,7 +72,9 @@ class HobbiesPage extends React.Component {
                                         overflow: 'auto',
                                         textAlign: 'justify'
                                     }}>
-                                        {hobby.text}
+                                        <Highlighter
+                                            searchWords={this.props.technologies}
+                                            textToHighlight={hobby.text}/>
                                     </CardText>
                                 </Card>
                             );
@@ -98,11 +102,12 @@ class HobbiesPage extends React.Component {
 
 HobbiesPage.propTypes = {
     actions: PropTypes.object.isRequired,
-    hobbies: PropTypes.array.isRequired
+    hobbies: PropTypes.array.isRequired,
+    technologies: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
-    return {hobbies: state.hobbies};
+    return {hobbies: state.hobbies.values, technologies: state.search};
 }
 
 function mapDispatchToProps(dispatch) {

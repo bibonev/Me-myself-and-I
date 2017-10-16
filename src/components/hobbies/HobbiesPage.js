@@ -23,8 +23,8 @@ class HobbiesPage extends React.Component {
         super();
 
         this.state = {
-            totalPages: 6,
-            displayPages: 4,
+            totalPages: 5,
+            displayPages: 5,
             currentPage: 1
         };
     }

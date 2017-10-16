@@ -39,7 +39,7 @@ var projects = [
             'C#', 'WPF', 'C', 'C++'
         ],
         text: "The project considers a problem connected with digitization and visualization of" +
-                " three-dimensional real objects which the user wants to carry over into cyberspa" +
+                " internal environment which the user wants to carry over into cyberspa" +
                 "ce. Creating, editing and visualization of models which are received by the devi" +
                 "ce – Microsoft Kinect, are the main aim of “BuildView”.",
         url: 'BuildView',
@@ -49,8 +49,8 @@ var projects = [
         technologies: [
             'C#', 'WPF', 'XNA', '3D Studio Max'
         ],
-        text: "Project which helps children to develop the skills of moving on the road safely." +
-                " This project has been developed in 2011/2012, when I (B. Bonev) was at the age " +
+        text: "Project which helps children to develop the skills of crossing the road safely." +
+                " This project has been developed in 2011/2012, when I was at the age " +
                 "of 14. The project has been used in some Bulgarian schools during 'Hour of the T" +
                 "eacher' class.",
         url: 'AbideByTheRules',
@@ -79,9 +79,8 @@ var projects = [
         technologies: [
             'React', 'Redux', 'Node', 'Node-RED'
         ],
-        text: 'An internal competition at IBM in the UK has led to technology that could potent' +
-                'ially improve the quality of life for very young children with paraplegia and th' +
-                'eir parents.',
+        text: 'An internal competition at IBM in UK has led to technology that could potent' +
+                'ially improve the quality of life for parents and their children with paraplegia',
         url: 'spinal-cord-hackathon',
         page: 2
     }, {
@@ -141,7 +140,7 @@ var projects = [
             'Twitter API',
             'Django'
         ],
-        text: "An application that determines the mood of people in specific location.",
+        text: "An application that determines the mood of people in a specific location.",
         url: 'MoodLoc',
         page: 3
     }, {

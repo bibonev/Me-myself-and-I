@@ -4,23 +4,21 @@ let education = [
     {
         name: 'University of Birmingham',
         image: 'uni_birmingham.png',
-        durationPlace: '(September 2002 - July 2010) - 8 yrs • Parvomay, Plovdiv, Bulgaria',
+        durationPlace: '(September 2015 - June 2019) - 4 yrs • Birmingham, UK',
         textBefore: 'Studying Computer Science with a year in the industry',
         points: [
             'Year 1 - First Class Honours', 'Year 2 - First Class Honours', 'Year 3 - Placement Year at IBM'
         ],
         textAfter: ''
-    },
-    {
+    }, {
         name: 'Math High School "Acad. Kiril Popov"',
         image: 'omg_plovdiv.jpg',
         durationPlace: '(September 2010 - July 2015) - 5 yrs • Plovdiv, Bulgaria',
-        textBefore: 'Graduated with a diploma of high school education from System Programming path - 5' +
-                '.93/6.00',
+        textBefore: 'Graduated with a diploma of high school education from System Programming path -' +
+                ' 5.93/6.00',
         points: [],
         textAfter: ''
-    }, 
-    {
+    }, {
         name: 'Secondary School "Prof. Ph.D. Asen Zlatarov"',
         image: 'asen_zlatarov.jpg',
         durationPlace: '(September 2002 - July 2010) - 8 yrs • Parvomay, Plovdiv, Bulgaria',
@@ -50,8 +48,7 @@ let comercial = [
             "presenting interesting topics during lunch 'n' learns"
         ],
         textAfter: ''
-    },
-    {
+    }, {
         name: 'Software Developer',
         image: 'contact_group.jpeg',
         durationPlace: 'Contact Group • (Jun 2016 - Mar 2017) - 11 mos • Birmingham, United Kingdom',

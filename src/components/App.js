@@ -54,11 +54,11 @@ class App extends React.Component {
         let req = [];
         if (request !== '' && request !== undefined) {
             req = request
-                .replace(/ /g, '')
-                .replace(/\d*[.]?\d*/g, '')
+                .replace(' ', '')
                 .toLowerCase()
                 .split(',');
         }
+
         this
             .props
             .searchActions
@@ -110,8 +110,6 @@ class App extends React.Component {
         let textColor = selected
             ? 'black'
             : 'white';
-
-        console.log("VALUE: ", value);
 
         return (
             <Badge

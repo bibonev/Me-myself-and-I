@@ -67,7 +67,10 @@ class GridCard extends React.Component {
                                         }}
                                             backgroundColor={"#1D364D"}
                                             labelColor={"white"}>
-                                            <Highlighter searchWords={this.props.technologies} textToHighlight={chip}/>
+                                            <Highlighter
+                                                autoEscape={true}
+                                                searchWords={this.props.technologies}
+                                                textToHighlight={chip}/>
                                         </Chip>
 
                                     </div>
@@ -77,6 +80,7 @@ class GridCard extends React.Component {
                     <br/> {(this.props.blockquote && this.props.blockquote === true)
                         ? <blockquote>
                                 <Highlighter
+                                    autoEscape={true}
                                     searchWords={this.props.technologies}
                                     textToHighlight={this.props.text}/>
                             </blockquote>

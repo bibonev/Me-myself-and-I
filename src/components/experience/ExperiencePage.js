@@ -173,6 +173,7 @@ class ExperiencePage extends React.Component {
                                                     <Divider/>
                                                     <br/>
                                                     <Highlighter
+                                                        autoEscape={true}
                                                         unhighlightStyle={style.unhighlightStyle}
                                                         searchWords={this.props.technologies}
                                                         textToHighlight={stage.textBefore}/>
@@ -183,6 +184,7 @@ class ExperiencePage extends React.Component {
                                                                 return (
                                                                     <li>
                                                                         <Highlighter
+                                                                            autoEscape={true}
                                                                             unhighlightStyle={style.unhighlightStyle}
                                                                             searchWords={this.props.technologies}
                                                                             textToHighlight={point}/>
@@ -191,6 +193,7 @@ class ExperiencePage extends React.Component {
                                                             })}
                                                     </ul>
                                                     {stage.textAfter !== '' && (<Highlighter
+                                                        autoEscape={true}
                                                         unhighlightStyle={style.unhighlightStyle}
                                                         searchWords={this.props.technologies}
                                                         textToHighlight={stage.textAfter}/>)}
@@ -247,17 +250,20 @@ class ExperiencePage extends React.Component {
                                                     <Divider/>
                                                     <br/>
                                                     <Highlighter
+                                                        autoEscape={true}
                                                         unhighlightStyle={style.unhighlightStyle}
                                                         searchWords={this.props.technologies}
                                                         textToHighlight={stage.textBefore}/> {stage
                                                         .points
                                                         .map(point => {
                                                             return (<Highlighter
+                                                                autoEscape={true}
                                                                 unhighlightStyle={style.unhighlightStyle}
                                                                 searchWords={this.props.technologies}
                                                                 textToHighlight={point}/>);
                                                         })}
                                                     {stage.textAfter !== '' && (<Highlighter
+                                                        autoEscape={true}
                                                         unhighlightStyle={style.unhighlightStyle}
                                                         searchWords={this.props.technologies}
                                                         textToHighlight={stage.textAfter}/>)}

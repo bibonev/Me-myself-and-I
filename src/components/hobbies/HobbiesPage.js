@@ -73,6 +73,7 @@ class HobbiesPage extends React.Component {
                                         textAlign: 'justify'
                                     }}>
                                         <Highlighter
+                                            autoEscape={true}
                                             searchWords={this.props.technologies}
                                             textToHighlight={hobby.text}/>
                                     </CardText>

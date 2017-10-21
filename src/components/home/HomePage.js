@@ -40,6 +40,7 @@ class HomePage extends React.Component {
                             environment made me learn a variety of new programming languges and technologies
                             like</span>
                         <Highlighter
+                            autoEscape={true}
                             searchWords={this.props.technologies}
                             textToHighlight={" C#, WPF, XNA, C++"}/>
                         <span>
@@ -97,8 +98,8 @@ class HomePage extends React.Component {
                     <p>The department I am part of, at IBM, is called Platform Transformation
                         Center. I am assigned to the development team and we develop both internal and
                         external products for internal and external clients. The department is mainly
-                        focussed on clearance process of tools/comapanies/teams that IBM enquire. Also,
-                        I am part of some other teams as a give back project, such as Living Lab, which
+                        focussed on clearance process of tools/companies/teams that IBM enquire. Also, I
+                        am part of some other teams as a give back project, such as Living Lab, which
                         uses IoT technologies to keep track of some of the measurements in IBM such as
                         temperature, humidity, sound, etc. Moreoever, I have recently joined a patent
                         group which I hope to help me improve my creativity skills even more. As I am
